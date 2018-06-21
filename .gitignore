@@ -1,3 +1,7 @@
 node_modules
-
-./public/js/index.bundle.js
+#### 追加ignore
+main
+index.bundle.js.map
+index.bundle.js
+config.yml
+Gopkg.*
