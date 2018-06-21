@@ -1,12 +1,13 @@
 class Auth{
     constructor(){
-
+        this.token = ""
     }
     SetToken(t){
-        localStorage.setItem("token", t)
+        this.token = t
+        localStorage.setItem('token',t);
     }
     GetToken(){
-        return localStorage.getItem("token")
+        return localStorage['token']
     }
 }
 var auth = new Auth()

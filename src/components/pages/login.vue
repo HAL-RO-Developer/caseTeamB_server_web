@@ -4,7 +4,7 @@
             <header class="modal-card-head">
                 <p class="modal-card-title">ログイン</p>
             </header>
-            <div v-if="msg">{{msg}}</div>
+            <div v-if="err" id = "err">{{ err }}</div>
             <section class="modal-card-body">
                 <b-field label="Name">
                     <b-input
@@ -35,37 +35,48 @@
 </template>
 
 <script>
-import axios from 'axios'
-import http from '../../service/service'
-import auth from '../../service/auth'
-export default {
-    data() {
-        return {
-            name: "",
-            password: ""
-        }
-    },
-    methods:{
-        signup(){
-            http.signup(this.name, this.password)
-            .then((response)=>{
-                console.log(response)
-            })
-            .catch((err)=>{
-                console.log(err)
-            });
+    import axios from 'axios'
+    import http from '../../service/service'
+    import auth from '../../service/auth'
+    export default {
+        data() {
+            return {
+                name: "",
+                password: "",
+                err: ""
+            }
         },
-        signin(){
-            http.signin(this.name, this.password)
-            .then(function (response) {
-                console.log(response.data.token);   
-                auth.SetToken(response.data.token);
-                window.location.href = '/'            
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        methods:{
+            signup(){
+                http.signup(this.name, this.password)
+                .then((response)=> {
+                    console.log(response.data.success);
+                    this.signin();
+                }) 
+                .catch((error)=>{
+                    //   console.log(error.response.data);
+                    this.err = error.response.data.error;
+                });
+            },
+            signin(){
+                http.signin(this.name, this.password)
+                .then((response) => {
+                    console.log("then");
+                    console.log(response.data.token);   
+                    auth.SetToken(response.data.token); 
+                    this.$router.push({ path: '/pin' });
+                })
+                .catch((error) => {
+                console.log("catch");
+                     console.log(error.response.data);
+                     this.err = error.response.data.error;
+                });
+            }
         }
     }
-}
 </script>
+<style>
+ #err{
+     color:red;
+ }
+</style>

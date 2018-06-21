@@ -1,8 +1,8 @@
 import axios from 'axios'
-import auth from './auth'
-
+import auth  from './auth'
+URL = 'https://caseteambserver-lbwxlsrmsq.now.sh/';
 const api = axios.create({
-    baseURL: 'https://caseteambserver-tlbxdwyvvc.now.sh/api', // バックエンドB のURL:port を指定する
+    baseURL: URL, // バックエンドB のURL:port を指定する
     headers: {
       'ContentType': 'application/json',
       'Authorization': auth.GetToken()
@@ -13,24 +13,34 @@ const api = axios.create({
 class Http{
     constructor(){
     }
-    createButton(){
-
-    }
     signin(name, pass){
-        return  api.post('/signin',{
+        return  api.post('signin',{
             name,
             pass
         })
     }
     signup(name, pass){
-        return  api.post('/signup',{
+        return  api.post('signup',{
             name,
             pass
         })
+        alert("Siginup");
     }
-    createButton(){
-        return api.post('/button')
-    }
+    getpin(){
+        return  api.post('goal/button')
+  }
+    getid(){
+    return  api.get('goal/button')
+  }
+  
+    addgoal(button_id,goal){
+        return api.post('goal/goal',{
+         button_id,
+         goal
+        
+    })
+  }
+  
 }
 var http = new Http()
 export default http;

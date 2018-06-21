@@ -1,19 +1,27 @@
 <template>
-    <button @click="createButton"></button>
+<div>
+    <h1 @click="hello">{{ name }}</h1>
+    <input type="text" v-model="name">
+</div>
 </template>
 
 <script>
-import SideBar from '../modules/sidebar.vue'
 
 export default {
   name: "index",
-  components: {
-    SideBar
+  data(){
+    return{
+      name:"makki"
+    }
   },
   methods:{
-    createButton(){
-      console.log("on push!!")
+    hello(){
+      console.log("hello!")
+      this.name = "hello!!"
     }
   }
 }
 </script>
+<style>
+
+</style>
