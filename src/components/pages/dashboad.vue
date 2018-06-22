@@ -2,6 +2,7 @@
 <div>
     <h1>{{pin}}</h1>
     <button class="button" type="button" @click="createButton">foo</button>
+    <under-tab :index=1></under-tab>
 </div>
 </template>
 
