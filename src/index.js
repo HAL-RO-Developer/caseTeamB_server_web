@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 //import Index from './components/pages/index.vue'
 import pin from './components/pages/pin.vue'
+import GoalDetails from './components/pages/goaldetails.vue'
 import Login from './components/pages/login.vue'
 import Goal from './components/pages/goal.vue'
 import Delete from './components/pages/delete.vue'
@@ -17,6 +18,7 @@ Vue.use(VueRouter)
 
 const routes = [
      { path: "/pin", component: pin },
+     { path: "/goaldetails", component: GoalDetails },
     //{ path:"/", component: Index},
     { path: "/" , component: Login },
     { path: "/goal" , component: Goal },

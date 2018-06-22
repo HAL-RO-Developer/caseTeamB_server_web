@@ -1,8 +1,8 @@
 <template>
 <div>
-<h1 >
-       {{pin}} 
-    </h1>
+<h1>
+    {{pin}} 
+</h1>
 <button @click="onclick">    
   put
 </button>
