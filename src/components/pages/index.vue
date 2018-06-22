@@ -5,10 +5,20 @@
 <script>
 
 export default {
+  name: "index",
+  data(){
+    return{
+      name:"makki"
+    }
+  },
   methods:{
-    createButton(){
-      console.log("on push!!")
+    hello(){
+      console.log("hello!")
+      this.name = "hello!!"
     }
   }
 }
 </script>
+<style>
+
+</style>
