@@ -1,8 +1,5 @@
 <template>
-<div>
-    <h1 @click="hello">{{ name }}</h1>
-    <input type="text" v-model="name">
-</div>
+    <under-tab :index=2></under-tab>
 </template>
 
 <script>
