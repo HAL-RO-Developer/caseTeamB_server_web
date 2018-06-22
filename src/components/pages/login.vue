@@ -1,4 +1,5 @@
 <template>
+    <div>
     <form action="">
         <div class="modal-card" style="width: auto">
             <header class="modal-card-head">
@@ -32,6 +33,8 @@
             </footer>
         </div>
     </form>
+    <under-tab :index=0></under-tab>
+    </div>
 </template>
 
 <script>
