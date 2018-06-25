@@ -4,6 +4,7 @@ import Index from './components/pages/index.vue'
 import dashboad from './components/pages/dashboad.vue'
 //import Index from './components/pages/index.vue'
 import pin from './components/pages/pin.vue'
+import GoalDetails from './components/pages/goaldetails.vue'
 import Login from './components/pages/login.vue'
 import Goal from './components/pages/goal.vue'
 import Delete from './components/pages/delete.vue'
@@ -25,6 +26,7 @@ const routes = [
     { path: "/test", component: Index },
     { path: "/login" , component: Login },
      { path: "/pin", component: pin },
+     { path: "/goaldetails", component: GoalDetails },
     //{ path:"/", component: Index},
     { path: "/" , component: Login },
     { path: "/goal" , component: Goal },

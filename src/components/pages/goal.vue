@@ -9,13 +9,13 @@
 </select>
 <form action="">
 <b-field label="goal">
-                    <b-input 
-                            type="text"
-                            v-model="goal"
-                            placeholder="new goal"
-                            required>
-                    </b-input>
-                </b-field>
+    <b-input 
+        type="text"
+        v-model="goal"
+        placeholder="new goal"
+        required>
+    </b-input>
+</b-field>
  <button class="button" type="button" @click="add">登録</button>
 </form>
 </div>
@@ -33,7 +33,6 @@ export default {
                 .then((response)=> {
                     console.log(response)
                     this.options = response.data.goal_id
-
                 }) 
                 .catch(function (error) {
                     console.log(error);
@@ -52,20 +51,17 @@ export default {
     methods:{
   
     add(){
-                http.addgoal(this.id, this.goal)
-                .then((response)=> {
-                    console.log(response);
-                    this.ok = response.data.success;
-                }) 
-                .catch((error)=>{
-                       console.log(error.response.data);
-                       this.err = error.response.data.error;
-                });
-            },
-      
+            http.addgoal(this.id, this.goal)
+            .then((response)=> {
+                console.log(response);
+                this.ok = response.data.success;
+            }) 
+            .catch((error)=>{
+                    console.log(error.response.data);
+                    this.err = error.response.data.error;
+            });
+        },
     }
-   
-    
 }
 </script>
 <style>

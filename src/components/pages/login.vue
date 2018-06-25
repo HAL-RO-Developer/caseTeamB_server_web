@@ -65,8 +65,8 @@
                 http.signin(this.name, this.password)
                 .then((response) => {
                     console.log("then");
-                    console.log(response.data.token);   
-                    auth.SetToken(response.data.token); 
+                    console.log(response.data.token);
+                    auth.SetToken(response.data.token);
                     this.$router.push({ path: '/pin' });
                 })
                 .catch((error) => {
