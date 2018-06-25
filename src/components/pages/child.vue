@@ -1,5 +1,6 @@
 <template>
 <div id = "form" class="modal-card" style="width: auto">
+    <p v-if="err" id = "err">{{err}}</p>
     <form>
  <footer class="modal-card-foot">
     <h1>子ども　登録</h1>
@@ -58,7 +59,8 @@ export default {
     return {
       name: "",
       sex: null,
-      date: new Date()
+      date: new Date(),
+      err : ""
     };
   },
   methods: {
@@ -70,16 +72,20 @@ export default {
       http.addchild(this.name,date.format("YYYY-MM-DD"),this.sex.value)
         .then(response => {
           console.log(response.data.success);
+          this.$router.push({ path: '/child/list' });
         })
         .catch(error => {
           console.log(error.response.data);
           this.err = error.response.data.error;
         });
-      //遷移
-      this.$router.push({ path: '/child/list' });
+     
     }
   }
 };
 </script>
 
-
+<style>
+#err {
+  color: red;
+}
+</style>
