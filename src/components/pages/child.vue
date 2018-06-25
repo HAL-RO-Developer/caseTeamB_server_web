@@ -71,7 +71,6 @@ export default {
       // post
       http.addchild(this.name,date.format("YYYY-MM-DD"),Number(this.sex))
         .then(response => {
-          console.log(this.sex)
           console.log(response.data.success);
           this.$router.push({ path: '/child/list' });
         })
