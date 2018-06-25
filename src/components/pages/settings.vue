@@ -17,7 +17,9 @@
             this.$router.push({ path: '/child' });
             },
             logout(){
-               
+               localStorage.removeItem("token")
+               this.$router.push({ path: '/login' });
+
             }
         }
     }
