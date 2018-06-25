@@ -57,8 +57,12 @@
             }
         } ,
         methods:{
-      onclick:()=>{
-        this.month = month.substr( 0, 1 );
+      onclick(){
+          // post 
+
+          //遷移
+        this.$router.push({ path: '/' });
+
       }
            }
     }

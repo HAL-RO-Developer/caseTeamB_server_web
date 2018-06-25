@@ -6,6 +6,7 @@
 <button @click="onclick">    
   put
 </button>
+    <under-tab :index=0></under-tab>
 </div>
 </template>
 <script>

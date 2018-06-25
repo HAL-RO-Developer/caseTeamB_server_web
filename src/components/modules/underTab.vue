@@ -1,7 +1,7 @@
 <template>
     <section id="undertab"  class="container">
     <b-tabs type="is-toggle" v-model="IndexModel" @change="change" expanded>
-        <b-tab-item label="デバイス登録" icon="google-photos"></b-tab-item>
+        <b-tab-item label="登録" icon="google-photos"></b-tab-item>
         <b-tab-item label="目標" icon="library-music"></b-tab-item>
         <b-tab-item label="設定" icon="settings"></b-tab-item>
     </b-tabs>
