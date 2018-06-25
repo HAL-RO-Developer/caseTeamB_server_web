@@ -43,7 +43,6 @@
     <button class="button" type="button"  @click="onclick">登録</button>
      </footer>
     </form>
-     <p v-if="date">{{date}}</p>
     <under-tab :index=2 ></under-tab>
 </div>
 </template>
@@ -77,7 +76,7 @@ export default {
           this.err = error.response.data.error;
         });
       //遷移
-      //this.$router.push({ path: '/' });
+      this.$router.push({ path: '/child/list' });
     }
   }
 };
