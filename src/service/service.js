@@ -1,46 +1,55 @@
 import axios from 'axios'
-import auth  from './auth'
+import auth from './auth'
 URL = 'https://caseteambserver-nxczkpuyio.now.sh/';
 const api = axios.create({
     baseURL: URL, // バックエンドB のURL:port を指定する
     headers: {
-      'ContentType': 'application/json',
-      'Authorization': auth.GetToken()
+        'ContentType': 'application/json',
+        'Authorization': auth.GetToken()
     },
-    responseType: 'json'  
-  });
+    responseType: 'json'
+});
 
-class Http{
-    constructor(){
+class Http {
+    constructor() {
     }
-    signin(name, pass){
-        return  api.post('signin',{
+    signin(name, pass) {
+        return api.post('signin', {
             name,
             pass
         })
     }
-    signup(name, pass){
-        return  api.post('signup',{
+    signup(name, pass) {
+        return api.post('signup', {
             name,
             pass
         })
         alert("Siginup");
     }
-    getpin(){
-        return  api.post('goal/button')
-  }
-    getid(){
-    return  api.get('goal/button')
-  }
-  
-    addgoal(button_id,goal){
-        return api.post('goal/goal',{
-         button_id,
-         goal
-        
-    })
-  }
-  
+    getpin() {
+        return api.post('goal/button')
+    }
+    getid() {
+        // return  api.get('goal/button')
+        return new Promise((callback) => {
+            var res = {
+                data: {
+                    goal: "風呂掃除",
+                    updated_at: "2018-6-24"
+                }
+            }
+            callback(res)
+        })
+    }
+
+    addgoal(button_id, goal) {
+        return api.post('goal/goal', {
+            button_id,
+            goal
+
+        })
+    }
+
 }
 var http = new Http()
 export default http;
