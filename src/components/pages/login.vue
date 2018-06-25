@@ -38,48 +38,50 @@
 </template>
 
 <script>
-    import axios from 'axios'
-    import http from '../../service/service'
-    import auth from '../../service/auth'
-    export default {
-        data() {
-            return {
-                name: "",
-                password: "",
-                err: ""
-            }
-        },
-        methods:{
-            signup(){
-                http.signup(this.name, this.password)
-                .then((response)=> {
-                    console.log(response.data.success);
-                    this.signin();
-                }) 
-                .catch((error)=>{
-                    //   console.log(error.response.data);
-                    this.err = error.response.data.error;
-                });
-            },
-            signin(){
-                http.signin(this.name, this.password)
-                .then((response) => {
-                    console.log("then");
-                    console.log(response.data.token);
-                    auth.SetToken(response.data.token);
-                    this.$router.push({ path: '/pin' });
-                })
-                .catch((error) => {
-                console.log("catch");
-                     console.log(error.response.data);
-                     this.err = error.response.data.error;
-                });
-            }
-        }
+import axios from "axios";
+import http from "../../service/service";
+import auth from "../../service/auth";
+export default {
+  data() {
+    return {
+      name: "",
+      password: "",
+      err: ""
+    };
+  },
+  methods: {
+    signup() {
+      http
+        .signup(this.name, this.password)
+        .then(response => {
+          console.log(response.data.success);
+          this.signin();
+        })
+        .catch(error => {
+          console.log(error.response.data);
+          this.err = error.response.data.error;
+        });
+    },
+    signin() {
+      http
+        .signin(this.name, this.password)
+        .then(response => {
+          console.log("then");
+          console.log(response.data.token);
+          auth.SetToken(response.data.token);
+          this.$router.push({ path: "/pin" });
+        })
+        .catch(error => {
+          console.log("catch");
+          console.log(error.response.data);
+          this.err = error.response.data.error;
+        });
     }
+  }
+};
 </script>
 <style>
- #err{
-     color:red;
- }
+#err {
+  color: red;
+}
 </style>

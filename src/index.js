@@ -5,6 +5,7 @@ import dashboad from './components/pages/dashboad.vue'
 //import Index from './components/pages/index.vue'
 import pin from './components/pages/pin.vue'
 import child from './components/pages/child.vue'
+import childlist from './components/pages/childlist.vue'
 import GoalDetails from './components/pages/goaldetails.vue'
 import Settings from './components/pages/settings.vue'
 import Login from './components/pages/login.vue'
@@ -33,6 +34,7 @@ const routes = [
     //{ path:"/", component: Index},
     { path: "/" , component: Login },
     { path: "/child", component: child},
+    { path: "/child/list", component: childlist},
     { path: "/goal" , component: Goal },
     { path: "/delete" , component: Delete },
     { path: "*", component: NotFound },
