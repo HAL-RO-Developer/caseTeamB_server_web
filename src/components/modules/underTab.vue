@@ -3,7 +3,7 @@
     <b-tabs type="is-toggle" v-model="IndexModel" @change="change" expanded>
         <b-tab-item label="Login" icon="google-photos"></b-tab-item>
         <b-tab-item label="Top" icon="library-music"></b-tab-item>
-        <b-tab-item label="test" icon="video"></b-tab-item>
+        <b-tab-item label="Setting" icon="settings"></b-tab-item>
     </b-tabs>
     </section>
 </template>
@@ -29,7 +29,7 @@ export default {
                     this.$router.push({path:"/"})
                     break;
                 case 2:
-                    this.$router.push({path:"/test"})
+                    this.$router.push({path:"/child"})
                     break;
                 default:
                     break;
