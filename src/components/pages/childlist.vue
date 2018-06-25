@@ -1,6 +1,8 @@
 <template>
 <div>
   <div>
+    <button class="button" type="button">登録</button>
+                </b-table-column>
    <b-table :data="data" :columns="columns"></b-table>
    </div>
         <under-tab :index=2 ></under-tab>
@@ -25,16 +27,17 @@ export default {
           numeric: true
         },
         {
-          field: "birthday",
-          label: "誕生日"
+          field: "nickname",
+          label: "名前",
+
         },
         {
-          field: "nickname",
-          label: "名前"
+          field: "birthday",
+          label: "誕生日",
         },
         {
           field: "sex",
-          label: "性別"
+          label: "性別",
         }
       ]
     };
