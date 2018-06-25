@@ -1,9 +1,9 @@
 <template>
     <section id="undertab"  class="container">
     <b-tabs type="is-toggle" v-model="IndexModel" @change="change" expanded>
-        <b-tab-item label="Login" icon="google-photos"></b-tab-item>
-        <b-tab-item label="Top" icon="library-music"></b-tab-item>
-        <b-tab-item label="Setting" icon="settings"></b-tab-item>
+        <b-tab-item label="デバイス登録" icon="google-photos"></b-tab-item>
+        <b-tab-item label="目標" icon="library-music"></b-tab-item>
+        <b-tab-item label="設定" icon="settings"></b-tab-item>
     </b-tabs>
     </section>
 </template>
@@ -23,13 +23,13 @@ export default {
             // this.$router.push({path:"/login"})
             switch (this.IndexModel) {
                 case 0:
-                    this.$router.push({path:"/login"})
+                    this.$router.push({path:"/pin"})
                     break;
                 case 1:
                     this.$router.push({path:"/"})
                     break;
                 case 2:
-                    this.$router.push({path:"/child"})
+                    this.$router.push({path:"/settings"})
                     break;
                 default:
                     break;

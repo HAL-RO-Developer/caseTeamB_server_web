@@ -6,6 +6,7 @@ import dashboad from './components/pages/dashboad.vue'
 import pin from './components/pages/pin.vue'
 import child from './components/pages/child.vue'
 import GoalDetails from './components/pages/goaldetails.vue'
+import Settings from './components/pages/settings.vue'
 import Login from './components/pages/login.vue'
 import Goal from './components/pages/goal.vue'
 import Delete from './components/pages/delete.vue'
@@ -28,6 +29,7 @@ const routes = [
     { path: "/login" , component: Login },
      { path: "/pin", component: pin },
      { path: "/goaldetails", component: GoalDetails },
+     { path: "/settings", component: Settings },
     //{ path:"/", component: Index},
     { path: "/" , component: Login },
     { path: "/child", component: child},

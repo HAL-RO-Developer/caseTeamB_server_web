@@ -3,7 +3,7 @@
         <b-collapse class="card">
             <div slot="trigger" slot-scope="props" class="card-header">
                 <div class="card-header-title">
-                    <div id="goalname">{{ goalname }}</div>
+                    <div id="goalname"  ref="">{{ goalname }}</div>
                     目標名
                 </div>
                 <a class="card-header-icon">
