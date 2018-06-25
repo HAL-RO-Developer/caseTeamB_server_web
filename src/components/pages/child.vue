@@ -31,11 +31,11 @@
 
      <section class="modal-card-body">
     <b-radio v-model="sex"
-                native-value=0>
+                native-value = 0>
                 男
             </b-radio>
             <b-radio v-model="sex"
-                native-value=１>
+                native-value = 1>
                 女
             </b-radio>
      </section>
@@ -69,8 +69,9 @@ export default {
       date.locale();
       //console.log(date.format("YYYY-MM-DD"));
       // post
-      http.addchild(this.name,date.format("YYYY-MM-DD"),this.sex.value)
+      http.addchild(this.name,date.format("YYYY-MM-DD"),Number(this.sex))
         .then(response => {
+          console.log(this.sex)
           console.log(response.data.success);
           this.$router.push({ path: '/child/list' });
         })
