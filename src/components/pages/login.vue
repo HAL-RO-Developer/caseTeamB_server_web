@@ -57,8 +57,8 @@
                     this.signin();
                 }) 
                 .catch((error)=>{
-                    //   console.log(error.response.data);
-                  // this.err = error.response.data.error;
+                       console.log(error.response.data);
+                   this.err = error.response.data.error;
                 });
             },
             signin(){
@@ -71,8 +71,8 @@
                 })
                 .catch((error) => {
                 console.log("catch");
-                     //console.log(error.response.data);
-                     //this.err = error.response.data.error;
+                     console.log(error.response.data);
+                     this.err = error.response.data.error;
              });
             }
         }
