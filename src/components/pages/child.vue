@@ -52,12 +52,13 @@
             return {
                 name : "",
                 radio: null,
-                 month: null,
+                 month: null
+                 
             }
         } ,
         methods:{
       onclick:()=>{
-        month = month.substr( 0, 10 );
+        this.month = month.substr( 0, 1 );
       }
            }
     }
