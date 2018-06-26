@@ -3,10 +3,8 @@
   <section>
    <b-table :data="data" :columns="columns"  id = "table">
      </b-table>  
-
-z     </section>
-     
-        <under-tab :index=2 ></under-tab>
+<under-tab :index=2 ></under-tab>
+     </section>   
 </div>
 
 </template>
