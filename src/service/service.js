@@ -61,6 +61,11 @@ class Http {
     getchild() {
         return api.get('child')
     }
+    delechild(child_id) {
+        return api.delete('child', {
+            child_id
+    }) 
+ }
 }
 var http = new Http()
 export default http;

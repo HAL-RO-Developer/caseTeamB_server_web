@@ -5,6 +5,7 @@
      </b-table>  
 <under-tab :index=2 ></under-tab>
      </section>   
+     <button  v-for="i in length" class="del" @click="button = i;dele();">{{i}}削除</button>
 </div>
 
 </template>
@@ -17,7 +18,8 @@ import auth from "../../service/auth";
 export default {
   data() {
     return {
-      length : 0,
+      button : null,
+      length : null,
       data: [],
       columns: [
         {
@@ -38,11 +40,24 @@ export default {
       .then(response => {
         console.log(response);
         this.data = response.data.data;
-        this.response.data.data.length
+        this.length = this.data.length;
+        //console.log("%d",this.length);
       })
       .catch(function(error) {
         console.log(error.response);
       });
+  } , 
+  methods: {
+    dele(){
+      http
+        .delechild(this.button)
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.log(error.response.data);
+        });
+    }
   }
 };
 </script>
@@ -50,13 +65,10 @@ export default {
 <style>
 #table {
   width: 80%;
-  height: 100%;
   display: inline-block;
   text-align: center;
 }
-#button{
+.del{
   width: 20%;
-  height: 100%;
-  float: right;
 }
 </style>
