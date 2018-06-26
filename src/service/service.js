@@ -50,6 +50,17 @@ class Http {
 
         })
     }
+    addchild(nickname, birthday, sex) {
+        return api.post('child', {
+            nickname,
+            birthday,
+            sex
+
+        })
+    }
+    getchild() {
+        return api.get('child')
+    }
 }
 var http = new Http()
 export default http;
