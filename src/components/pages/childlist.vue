@@ -19,7 +19,7 @@ import auth from "../../service/auth";
 export default {
   data() {
     return {
-      length = 0,
+      length : 0,
       data: [],
       columns: [
         {
