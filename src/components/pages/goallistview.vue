@@ -16,7 +16,7 @@ import auth from "../../service/auth";
 export default {
   created() {
     http
-      .getid()
+      .getgoal()
       .then(response => {
         console.log(response);
         this.goalname = response.data.goal;

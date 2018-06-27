@@ -45,7 +45,17 @@ class Http {
         */
         return api.get('device')
     }
-
+    getgoal() {
+        return new Promise((callback) => {
+            var res = {
+                data: {
+                    goal: "風呂掃除",
+                    updated_at: "2018-6-24"
+                }
+            }
+            callback(res)
+        })
+    }
     addgoal(button_id, goal) {
         return api.post('goal/goal', {
             button_id,
