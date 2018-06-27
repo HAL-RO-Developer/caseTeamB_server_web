@@ -3,9 +3,12 @@
   <section>
    <b-table :data="data" :columns="columns"  id = "table">
      </b-table>  
+          <button  v-for="i in length" v-bind:value="i" v-bind:key="i" 
+     class="button" type="button" id= "button"
+     @click="button = i;dele();">削除</button>
+
 <under-tab :index=2 ></under-tab>
      </section>   
-     <button  v-for="i in length" class="del" @click="button = i;dele();">{{i}}削除</button>
 </div>
 
 </template>
@@ -18,8 +21,8 @@ import auth from "../../service/auth";
 export default {
   data() {
     return {
-      button : null,
-      length : null,
+      button: 0,
+      length: 0,
       data: [],
       columns: [
         {
@@ -30,7 +33,7 @@ export default {
         {
           field: "nickname",
           label: "名前"
-        },
+        }
       ]
     };
   },
@@ -40,18 +43,18 @@ export default {
       .then(response => {
         console.log(response);
         this.data = response.data.data;
-        this.length = this.data.length;
+        this.length = this.data["length"];
         //console.log("%d",this.length);
       })
       .catch(function(error) {
         console.log(error.response);
       });
-  } , 
+  },
   methods: {
-
-    dele(){
+    dele(id) {
+      console.log(this.button);
       http
-        .delechild(this.button)
+        .delechild(Number(this.button))
         .then(response => {
           console.log(response.data);
         })
@@ -66,10 +69,13 @@ export default {
 <style>
 #table {
   width: 80%;
-  display: inline-block;
+  float: left;
   text-align: center;
 }
-.del{
+#button {
   width: 20%;
+  float: right;
+  margin-top: 10%;
+    text-align: center;
 }
 </style>
