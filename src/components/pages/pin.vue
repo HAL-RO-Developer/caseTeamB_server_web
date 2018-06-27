@@ -1,6 +1,6 @@
 <template>
 <div id= "pin">
-<h1>
+<h1 id = "box">
     {{pin}} 
 </h1>
 <p>child_id</p>
@@ -36,7 +36,7 @@ export default {
         return {
             length: 0 ,
             data : "",
-            pin : "pin",
+            pin : "",
             options : "hoge",
             id : ""
         }
@@ -60,5 +60,8 @@ export default {
 <style>
 #pin{
     text-align: center;
+}
+#box{
+    border: solid #008080;
 }
 </style>
