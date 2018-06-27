@@ -1,17 +1,16 @@
 <template>
 <div>
-  <div>
-    <button class="button" type="button">登録</button>
-                </b-table-column>
-   <b-table :data="data" :columns="columns"></b-table>
-   </div>
-        <under-tab :index=2 ></under-tab>
-
+  <section>
+   <b-table :data="data" :columns="columns"  id = "table">
+     </b-table>  
+<under-tab :index=2 ></under-tab>
+     </section>   
+     <button  v-for="i in length" class="del" @click="button = i;dele();">{{i}}削除</button>
 </div>
+
 </template>
 
 <script>
-import moment from "moment";
 import http from "../../service/service";
 import axios from "axios";
 import auth from "../../service/auth";
@@ -19,6 +18,8 @@ import auth from "../../service/auth";
 export default {
   data() {
     return {
+      button : null,
+      length : null,
       data: [],
       columns: [
         {
@@ -28,17 +29,8 @@ export default {
         },
         {
           field: "nickname",
-          label: "名前",
-
+          label: "名前"
         },
-        {
-          field: "birthday",
-          label: "誕生日",
-        },
-        {
-          field: "sex",
-          label: "性別",
-        }
       ]
     };
   },
@@ -48,20 +40,36 @@ export default {
       .then(response => {
         console.log(response);
         this.data = response.data.data;
-        for (var i = 0; i < this.data.length; i++) {
-          if (this.data[i].sex == 0) {
-            this.data[i].sex = "男";
-          } else if (this.data[i].sex == 1) {
-            this.data[i].sex = "女";
-          }
-          var date = moment(this.data[i].birthday)
-          date.locale()
-          this.data[i].birthday = date.format("YYYY-MM-DD")
-        }
+        this.length = this.data.length;
+        //console.log("%d",this.length);
       })
       .catch(function(error) {
         console.log(error.response);
       });
+  } , 
+  methods: {
+
+    dele(){
+      http
+        .delechild(this.button)
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.log(error.response.data);
+        });
+    }
   }
 };
 </script>
+
+<style>
+#table {
+  width: 80%;
+  display: inline-block;
+  text-align: center;
+}
+.del{
+  width: 20%;
+}
+</style>

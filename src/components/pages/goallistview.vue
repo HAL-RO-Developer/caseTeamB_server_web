@@ -11,7 +11,7 @@ import Goallistview from "./goallistview.vue";
 export default {
   created() {
     http
-      .getid()
+      .getgoal()
       .then(response => {
         console.log(response);
         this.data = response.data.goals;

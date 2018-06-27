@@ -3,6 +3,7 @@
 <h1>
     {{pin}} 
 </h1>
+
 <button @click="onclick">    
   put
 </button>
