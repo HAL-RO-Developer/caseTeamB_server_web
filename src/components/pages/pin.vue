@@ -26,7 +26,6 @@ export default {
       .then(response => {
         this.data = response.data.data;
         this.length =  this.data['length' ];
-        console.log(this.data[1]['child_id']);
       })
       .catch(function(error) {
         console.log(error.response);
