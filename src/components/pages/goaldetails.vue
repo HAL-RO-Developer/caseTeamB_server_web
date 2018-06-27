@@ -1,17 +1,5 @@
 <template>
-    <section>
-        <div class="card-footer">
-            <div id="goal" class="card-footer-item">目標一覧</div>            
-        </div>
-        <div class="card-footer">
-            <div id="goal" class="card-footer-item">目標名</div>
-            <div id="updated_at" class="card-footer-item">達成日時</div>
-            <div id="percent" class="card-footer-item">達成率</div>              
-        </div>
-        
-        <goallistview></goallistview>
-        
-    </section>
+  <goallistview></goallistview>
 </template>
 
 
@@ -21,11 +9,43 @@ import http from "../../service/service";
 import auth from "../../service/auth";
 import Goallistview from "./goallistview.vue";
 export default {
+  created() {
+    http
+      .getid()
+      .then(response => {
+        console.log(response);
+        this.data = response.data.goals;
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  },
   data() {
     return {
-      goalname: "",
-      goalday: "",
-      percent: "0"
+      data: [],
+      columns: [
+        {
+          field: "id",
+          label: "ID",
+          numeric: true
+        },
+        {
+          field: "name",
+          label: "目標名"
+        },
+        {
+          field: "update_at",
+          label: "最終達成日"
+        },
+        {
+          field: "total",
+          label: "トータル"
+        },
+        {
+          field: "curentcnt",
+          label: "現在の回数"
+        }
+      ]
     };
   },
   methods: {
