@@ -28,6 +28,7 @@ class Http {
     }
     getpin(child_id) {
         return api.post('device',{
+            child_id
     })
 }
     getid() {
