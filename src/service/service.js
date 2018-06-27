@@ -32,18 +32,6 @@ class Http {
     })
 }
     getid() {
-        // return  api.get('device')
-        /*
-        return new Promise((callback) => {
-            var res = {
-                data: {
-                    goal: "風呂掃除",
-                    updated_at: "2018-6-24"
-                }
-            }
-            callback(res)
-        })
-        */
         return api.get('device')
     }
     getgoal() {
