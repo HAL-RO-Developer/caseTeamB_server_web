@@ -5,7 +5,7 @@
      </b-table>  
 <under-tab :index=2 ></under-tab>
      </section>   
-     <button  v-for="i in length" class="del" @click="button = i;dele();">{{i}}削除</button>
+     <button  v-for="i in length" class="del" @click="button = i;dele;">{{i}}削除</button>
 </div>
 
 </template>
