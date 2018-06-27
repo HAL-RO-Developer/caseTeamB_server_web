@@ -26,11 +26,12 @@ class Http {
         })
         alert("Siginup");
     }
-    getpin() {
-        return api.post('goal/button')
-    }
+    getpin(child_id) {
+        return api.post('device',{
+    })
+}
     getid() {
-        // return  api.get('goal/button')
+        // return  api.get('device')
         return new Promise((callback) => {
             var res = {
                 data: {
@@ -40,7 +41,7 @@ class Http {
             }
             callback(res)
         })
-        return api.get('goal/button')
+        return api.get('device')
     }
 
     addgoal(button_id, goal) {
