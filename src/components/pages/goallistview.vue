@@ -1,11 +1,5 @@
 <template>
-    <section>
-        <div  class="card-footer">
-            <div id="goal" class="card-footer-item" @click="goal">{{goalname}}</div>
-            <div id="updated_at" class="card-footer-item">{{goalday}}</div>
-            <div id="percent" class="card-footer-item">{{percent}}%</div>
-        </div>
-    </section>
+  <b-table :data="data" :columns="columns"></b-table>
 </template>
 
 
@@ -13,14 +7,14 @@
 import axios from "axios";
 import http from "../../service/service";
 import auth from "../../service/auth";
+import Goallistview from "./goallistview.vue";
 export default {
   created() {
     http
       .getid()
       .then(response => {
         console.log(response);
-        this.goalname = response.data.goal;
-        this.goalday = response.data.updated_at;
+        this.data = response.data.goals;
       })
       .catch(function(error) {
         console.log(error);
@@ -28,15 +22,39 @@ export default {
   },
   data() {
     return {
-      goalname: "",
-      goalday: "",
-      percent: "0"
+      data: [],
+      columns: [
+        {
+          field: "id",
+          label: "ID",
+          numeric: true
+        },
+        {
+          field: "name",
+          label: "目標名"
+        },
+        {
+          field: "update_at",
+          label: "最終達成日"
+        },
+        {
+          field: "total",
+          label: "トータル"
+        },
+        {
+          field: "curentcnt",
+          label: "現在の回数"
+        }
+      ]
     };
   },
   methods: {
-    goal() {
-       this.$route.push({path: "/"})
+    detail() {
+      // this.$route.push({path: "/"})
     }
+  },
+  components: {
+    Goallistview
   }
 };
 </script>

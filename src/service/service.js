@@ -34,8 +34,29 @@ class Http {
         return new Promise((callback) => {
             var res = {
                 data: {
-                    goal: "風呂掃除",
-                    updated_at: "2018-6-24"
+                    goals: [
+                        {
+                            id: '1',
+                            name: 'hoge',
+                            update_at: '2018-06-21T13:35:08+09:00',
+                            total: '20',
+                            curentcnt: '3'
+                        },
+                        {
+                            id: '2',
+                            name: 'foo',
+                            update_at: '2018-06-21T13:35:08+09:00',
+                            total: '25',
+                            curentcnt: '19'
+                        },
+                        {
+                            id: '3',
+                            name: 'foga',
+                            update_at: '2018-06-21T13:35:08+09:00',
+                            total: '41',
+                            curentcnt: '20'
+                        }
+                    ]
                 }
             }
             callback(res)
