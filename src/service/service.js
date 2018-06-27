@@ -32,6 +32,7 @@ class Http {
 }
     getid() {
         // return  api.get('device')
+        /*
         return new Promise((callback) => {
             var res = {
                 data: {
@@ -41,6 +42,7 @@ class Http {
             }
             callback(res)
         })
+        */
         return api.get('device')
     }
 
