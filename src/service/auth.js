@@ -1,6 +1,6 @@
 class Auth{
     constructor(){
-        this.token = ""
+        this.token = localStorage['token'];
     }
     SetToken(t){
         this.token = t

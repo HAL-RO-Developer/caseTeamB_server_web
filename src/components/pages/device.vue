@@ -13,7 +13,7 @@
           </ul>
               <under-tab :index=0 ></under-tab>
               <center>
-        <button id = "button" class="button" @click="pin" v-if="err || length">pin</button>
+        <button id = "button" class="button" @click="pin" v-if="err || length != 0">pin</button>
               </center>
 
 </div>
