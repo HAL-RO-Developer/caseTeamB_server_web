@@ -24,7 +24,7 @@ export default {
     http
       .getchild()
       .then(response => {
-        this.data = response.data.data;
+        this.data = response.data.children;
         this.length =  this.data['length' ];
       })
       .catch(function(error) {

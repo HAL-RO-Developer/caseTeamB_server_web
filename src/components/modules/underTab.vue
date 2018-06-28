@@ -23,7 +23,7 @@ export default {
             // this.$router.push({path:"/login"})
             switch (this.IndexModel) {
                 case 0:
-                    this.$router.push({path:"/pin"})
+                    this.$router.push({path:"/device"})
                     break;
                 case 1:
                     this.$router.push({path:"/"})
