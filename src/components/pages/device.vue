@@ -2,14 +2,15 @@
 <div>
   <p id = "err">{{err}}</p>
   <ul v-if="length">
-        <li class="card" id = "title">状態</li>
-        <li class="card" id = "title">ID</li>
+        <li class="card" id = "state">状態</li>
+        <li class="card" id = "id">ID</li>
           </ul>
           
    <ul v-for= "i in length" v-bind:value="i" v-bind:key="i">
-        <li class="card" id = "id">{{}}</li>
-        <li class="card" id = "name">{{}}</li>
-        <li><button id = "button" class="button" @click="dele(data[i-1]['child_id']);">削除</button></li>
+        <li  id = "state"><p v-if="data[i-1]['device_alive'] == false" id="false" class="card">&nbsp;</p></li>
+        <li  id = "state"><p v-if="data[i-1]['device_alive'] == true" id="true" class="card">&nbsp;</p></li>
+
+        <li class="card" id = "id">{{data[i-1]['device_id']}}</li>
           </ul>
               <under-tab :index=0 ></under-tab>
 </div>
@@ -67,17 +68,22 @@ export default {
 };
 </script>
 <style>
- #title{
-   width: 45%;
-   float: left;
-   height: 2em;
- }
-#id{
+#state{
     float: left;
     width: 20%;
+}
+#id{
+ float: left;
+ width: 80%;
 }
 #err{
   text-align: center;
   color: RED;
+}
+#false{
+  background: red;
+}
+#true{
+  background: green;
 }
 </style>

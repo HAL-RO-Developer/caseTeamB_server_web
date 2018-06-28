@@ -69,7 +69,7 @@ export default {
           console.log("then");
           console.log(response.data.token);
           auth.SetToken(response.data.token);
-          this.$router.push({ path: "/pin" });
+          this.$router.push({ path: "/device" });
         })
         .catch(error => {
           console.log("catch");
