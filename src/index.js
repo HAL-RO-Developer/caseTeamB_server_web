@@ -6,6 +6,7 @@ import dashboad from './components/pages/dashboad.vue'
 import pin from './components/pages/pin.vue'
 import child from './components/pages/child.vue'
 import childlist from './components/pages/childlist.vue'
+import GoalList from './components/pages/goallistview.vue'
 import GoalDetails from './components/pages/goaldetails.vue'
 import Settings from './components/pages/settings.vue'
 import Login from './components/pages/login.vue'
@@ -27,19 +28,20 @@ Vue.component("under-tab", UnderTab);
 const routes = [
     { path: "/", component: dashboad },
     { path: "/test", component: Index },
-    { path: "/login" , component: Login },
-     { path: "/pin", component: pin },
-     { path: "/goaldetails", component: GoalDetails },
-     { path: "/settings", component: Settings },
+    { path: "/login", component: Login },
+    { path: "/pin", component: pin },
+    { path: "/goal/details", component: GoalDetails },
+    { path: "/goal/list", component: GoalList },
+    { path: "/settings", component: Settings },
     //{ path:"/", component: Index},
-    { path: "/" , component: Login },
-    { path: "/child", component: child},
-    { path: "/child/list", component: childlist},
-    { path: "/goal" , component: Goal },
-    { path: "/delete" , component: Delete },
+    { path: "/", component: Login },
+    { path: "/child", component: child },
+    { path: "/child/list", component: childlist },
+    { path: "/goal", component: Goal },
+    { path: "/delete", component: Delete },
     { path: "*", component: NotFound },
 ]
-const router = new VueRouter({  mode: 'history', routes })
+const router = new VueRouter({ mode: 'history', routes })
 
 new Vue({
     router
