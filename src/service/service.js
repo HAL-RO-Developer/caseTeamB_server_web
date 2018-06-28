@@ -11,8 +11,7 @@ const api = axios.create({
 });
 
 class Http {
-    constructor() {
-    }
+    constructor() {}
     signin(name, pass) {
         return api.post('signin', {
             name,
@@ -27,10 +26,10 @@ class Http {
         alert("Siginup");
     }
     getpin(child_id) {
-        return api.post('device',{
+        return api.post('device', {
             child_id
-    })
-}
+        })
+    }
     getid() {
         return api.get('device')
     }
@@ -38,8 +37,7 @@ class Http {
         return new Promise((callback) => {
             var res = {
                 data: {
-                    goals: [
-                        {
+                    goals: [{
                             id: '1',
                             name: 'hoge',
                             update_at: '2018-06-21T13:35:08+09:00',
@@ -85,10 +83,15 @@ class Http {
         return api.get('child')
     }
     delechild(child_id) {
+        /*
         return api.delete('child', {
-            child_id
-    }) 
- }
+             child_id
+        })
+        */
+       return api.delete('child', {
+        data: { child_id: child_id }
+        }) 
+    }
 }
 var http = new Http()
 export default http;
