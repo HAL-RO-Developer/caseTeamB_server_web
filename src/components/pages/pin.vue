@@ -3,9 +3,8 @@
 <h1 id = "box">
     {{pin}} 
 </h1>
-<p>child_id</p>
 <select v-model="id">
-<option v-for="a in length" v-bind:value="a" v-bind:key="a">{{data[a-1]['child_id']}}</option>
+<option v-for="a in length" v-bind:value="a" v-bind:key="a">{{data[a-1]['nickname']}}</option>
 </select>
 <button  class="button" type="button" @click="onclick" >    
   put
