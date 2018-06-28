@@ -1,30 +1,39 @@
 <template>
-<div id="aaa">
-  <buttun class="button" type="button" @click="day">日別</buttun>
-  <buttun class="button" type="button" @click="week">週別</buttun>
-  <p>ダミー</p>
-  <label for="">最終達成日</label>
-  <buttun class="button" type="button" @click="message">目標メッセージ</buttun>
-</div>
+<section>
+  <b-field>
+    <b-radio-button v-model="graph" :native-value="day" @Click="onDay">
+      日別
+    </b-radio-button>
+    <b-radio-button v-model="graph" :native-value="week" @click="onWeek">
+      週別
+    </b-radio-button>
+  </b-field>
+  {{graph}}
+</section>
 </template>
 
 
 <script>
-import auth from '../../service/auth';
-import http from '../../service/service';
-export default{
+import moment from "moment";
+import axios from "axios";
+import http from "../../service/service";
+import auth from "../../service/auth";
+export default {
+  data() {
+    return {
+      graph: "ダミー",
+      day: new Day(),
+      week: new Week()
+    };
+  },
   methods:{
-        day(){
-            http.createButton()
-            .then((response) => {
-                console.log(response.data.pin);
-                this.pin = response.data.pin
-            }) 
-            .catch((error) =>{
-                console.log(error);
-            });
-        }
+    onDay(){
+      var day = moment(this.day);
+    },
+    onWeek(){
+      var week = "www";
     }
-}
+  }
+};
 </script>
 
