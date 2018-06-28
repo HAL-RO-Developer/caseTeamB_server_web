@@ -28,10 +28,10 @@ export default {
             });
         }
     },
-    created:()=>{
+    created:function(){
         console.log("on create + "+ auth.GetToken())
         if(!auth.GetToken()){
-            window.location.href = '/login'
+            this.$router.push({ path: '/login' })
         }
     }
 }
