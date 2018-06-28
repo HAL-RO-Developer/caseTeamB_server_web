@@ -1,8 +1,7 @@
 <template>
 <div>
-
   <p id = "err">{{err}}</p>
-  <ul v-if="length != 0">
+  <ul v-if="length">
         <li class="card" id = "title">ID</li>
         <li class="card" id = "title">名前</li>
         <li id = "title2"></li>
@@ -41,7 +40,7 @@ export default {
     dele(id) {
       console.log("child_id:%dを消します", id);
       http
-        .delechild(id)
+        .delechild(String(id))
         .then(response => {
           console.log(response.data);
           this.set();
@@ -57,7 +56,7 @@ export default {
         .getchild()
         .then(response => {
           console.log(response);
-          this.data = response.data.data;
+          this.data = response.data.children;
           this.length = this.data["length"];
           //console.log("%d",this.length);
         })
