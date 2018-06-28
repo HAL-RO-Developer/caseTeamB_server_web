@@ -7,13 +7,17 @@
           </ul>
           
    <ul v-for= "i in length" v-bind:value="i" v-bind:key="i">
-        <li  id = "state"><p v-if="data[i-1]['device_alive'] == false" id="false" class="card">&nbsp;</p></li>
-        <li  id = "state"><p v-if="data[i-1]['device_alive'] == true" id="true" class="card">&nbsp;</p></li>
-
-        <li class="card" id = "id">{{data[i-1]['device_id']}}</li>
+        <li  id = "state" class="card"><p v-if="data[i-1]['device_alive'] == false" id="false">&nbsp;</p></li>
+        <li  id = "state" class="card"><p v-if="data[i-1]['device_alive'] == true" id="true">&nbsp;</p></li>
+        <li class="card" id = "id" c>{{data[i-1]['device_id']}}</li>
           </ul>
               <under-tab :index=0 ></under-tab>
+              <center>
+        <button id = "button" class="button" @click="pin" v-if="err || length">pin</button>
+              </center>
+
 </div>
+
 </template>
 <script>
 import http from "../../service/service";
@@ -63,8 +67,11 @@ export default {
           this.data = new Array();
           this.length = 0;
         });
-    }
-  }
+    },
+   pin(){
+       this.$router.push({ path: "/pin" });
+  } 
+  } 
 };
 </script>
 <style>
