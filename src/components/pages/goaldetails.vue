@@ -1,61 +1,30 @@
 <template>
-  <goallistview></goallistview>
+<div id="aaa">
+  <buttun class="button" type="button" @click="day">日別</buttun>
+  <buttun class="button" type="button" @click="week">週別</buttun>
+  <p>ダミー</p>
+  <label for="">最終達成日</label>
+  <buttun class="button" type="button" @click="message">目標メッセージ</buttun>
+</div>
 </template>
 
 
 <script>
-import axios from "axios";
-import http from "../../service/service";
-import auth from "../../service/auth";
-import Goallistview from "./goallistview.vue";
-export default {
-  created() {
-    http
-      .getid()
-      .then(response => {
-        console.log(response);
-        this.data = response.data.goals;
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-  },
-  data() {
-    return {
-      data: [],
-      columns: [
-        {
-          field: "id",
-          label: "ID",
-          numeric: true
-        },
-        {
-          field: "name",
-          label: "目標名"
-        },
-        {
-          field: "update_at",
-          label: "最終達成日"
-        },
-        {
-          field: "total",
-          label: "トータル"
-        },
-        {
-          field: "curentcnt",
-          label: "現在の回数"
+import auth from '../../service/auth';
+import http from '../../service/service';
+export default{
+  methods:{
+        day(){
+            http.createButton()
+            .then((response) => {
+                console.log(response.data.pin);
+                this.pin = response.data.pin
+            }) 
+            .catch((error) =>{
+                console.log(error);
+            });
         }
-      ]
-    };
-  },
-  methods: {
-    detail() {
-      // this.$route.push({path: "/"})
     }
-  },
-  components: {
-    Goallistview
-  }
-};
+}
 </script>
 

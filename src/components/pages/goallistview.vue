@@ -1,5 +1,5 @@
 <template>
-  <b-table :data="data" :columns="columns"></b-table>
+  <b-table @click="goal" :data="data" :columns="columns"></b-table>
 </template>
 
 
@@ -49,8 +49,8 @@ export default {
     };
   },
   methods: {
-    detail() {
-      // this.$route.push({path: "/"})
+    goal() {
+      this.$router.push({ path: "/child" });
     }
   },
   components: {
