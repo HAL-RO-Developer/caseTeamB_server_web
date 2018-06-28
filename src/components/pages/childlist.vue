@@ -1,14 +1,20 @@
 <template>
 <div>
-  <section>
-   <b-table :data="data" :columns="columns"  id = "table">
-     </b-table>  
-          <button  v-for="i in length" v-bind:value="i" v-bind:key="i" 
-     class="button" type="button" id= "button"
-     @click="button = i;dele();">削除</button>
 
-<under-tab :index=2 ></under-tab>
-     </section>   
+  <p id = "err">{{err}}</p>
+  <ul v-if="length != 0">
+        <li class="card" id = "title">ID</li>
+        <li class="card" id = "title">名前</li>
+        <li id = "title2"></li>
+          </ul>
+          
+   <ul v-for= "i in length" v-bind:value="i" v-bind:key="i">
+        <li class="card" id = "id">{{data[i-1]['child_id']}}</li>
+        <li class="card" id = "name">{{data[i-1]['nickname']}}</li>
+        <li><button id = "button" class="button" @click="dele(data[i-1]['child_id']);">削除</button></li>
+          </ul>
+              <under-tab :index=2 ></under-tab>
+
 </div>
 
 </template>
@@ -21,45 +27,45 @@ import auth from "../../service/auth";
 export default {
   data() {
     return {
-      button: 0,
+      selected : null,
+      err : "",
+      btn: 0,
       length: 0,
       data: [],
-      columns: [
-        {
-          field: "child_id",
-          label: "ID",
-          numeric: true
-        },
-        {
-          field: "nickname",
-          label: "名前"
-        }
-      ]
     };
   },
   created: function() {
-    http
-      .getchild()
-      .then(response => {
-        console.log(response);
-        this.data = response.data.data;
-        this.length = this.data["length"];
-        //console.log("%d",this.length);
-      })
-      .catch(function(error) {
-        console.log(error.response);
-      });
+    this.set();
   },
   methods: {
     dele(id) {
-      console.log(this.button);
+      console.log("child_id:%dを消します", id);
       http
-        .delechild(Number(this.button))
+        .delechild(id)
         .then(response => {
           console.log(response.data);
+          this.set();
         })
         .catch(error => {
-          console.log(error.response.data);
+          console.log(error.response.data.error);
+          this.err = error.response.data.error;
+
+        });
+    },
+    set() {
+      http
+        .getchild()
+        .then(response => {
+          console.log(response);
+          this.data = response.data.data;
+          this.length = this.data["length"];
+          //console.log("%d",this.length);
+        })
+        .catch(error => {
+          console.log(error.response);
+          this.err = error.response.data.error;
+          this.data = new Array();
+          this.length = 0;
         });
     }
   }
@@ -67,15 +73,32 @@ export default {
 </script>
 
 <style>
-#table {
-  width: 80%;
-  float: left;
+ 
+#err{
   text-align: center;
+  color: RED;
 }
-#button {
-  width: 20%;
-  float: right;
-  margin-top: 10%;
-    text-align: center;
+ul{
+  text-align: center;
+  width: 100%;
 }
+#button{
+  width: 10%;
+  height: 2em;
+}
+ #id,#name{ 
+   width: 45%;
+   float: left;
+   height: 2em;
+ } 
+ #title{
+   width: 45%;
+   float: left;
+   height: 2em;
+ }
+  #title2{
+   width: 10%;
+   float: left;
+   height: 2em;
+ }
 </style>
