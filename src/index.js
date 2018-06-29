@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import dashboad from './components/pages/dashboad.vue'
-import pin from './components/pages/pin.vue'
+import Dashboad from './components/pages/dashboad.vue'
+import Pin from './components/pages/pin.vue'
 import Device from './components/pages/device.vue'
-import child from './components/pages/child.vue'
-import childlist from './components/pages/childlist.vue'
+import Child from './components/pages/child.vue'
+import Childlist from './components/pages/childlist.vue'
+import Message from './components/pages/message.vue'
 import GoalList from './components/pages/goallistview.vue'
 import GoalDetails from './components/pages/goaldetails.vue'
 import Settings from './components/pages/settings.vue'
@@ -26,18 +27,19 @@ Vue.use(VueRouter)
 Vue.component("under-tab", UnderTab);
 
 const routes = [
-    { path: "/", component: dashboad },
+    { path: "/", component: Dashboad },
     { path: "/login", component: Login },
-    { path: "/pin", component: pin },
+    { path: "/pin", component: Pin },
     { path: "/device", component : Device},
     { path: "/goal/details", component: GoalDetails },
     { path: "/goal/list", component: GoalList },
     { path: "/settings", component: Settings },
-    { path: "/child", component: child },
-    { path: "/child/list", component: childlist },
+    { path: "/child", component: Child },
+    { path: "/child/list", component: Childlist },
     { path: "/test", component: Test },
     { path: "/goal", component: Goal },
     { path: "/delete", component: Delete },
+    { path: "/message", component: Message },
     { path: "*", component: NotFound },
 ]
 const router = new VueRouter({ mode: 'history', routes })

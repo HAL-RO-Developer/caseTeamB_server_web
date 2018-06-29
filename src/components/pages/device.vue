@@ -4,7 +4,7 @@
   <ul v-if="length">
         <li class="card" id = "state">状態</li>
         <li class="card" id = "id">ID</li>
-        <li id = "button"></li>
+        <li id = "button">&nbsp;</li>
           </ul>
           
    <ul v-for= "i in length" v-bind:value="i" v-bind:key="i">
@@ -31,7 +31,6 @@ export default {
     return {
       selected: null,
       err: "",
-      btn: 0,
       length: 0,
       data: []
     };

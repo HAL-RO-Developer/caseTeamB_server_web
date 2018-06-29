@@ -4,7 +4,7 @@
   <ul v-if="length">
         <li class="card" id = "id">ID</li>
         <li class="card" id = "name">名前</li>
-        <li id = "button"></li>
+        <li id = "button">&nbsp;</li>
           </ul>
           
    <ul v-for= "i in length" v-bind:value="i" v-bind:key="i">
@@ -26,9 +26,7 @@ import auth from "../../service/auth";
 export default {
   data() {
     return {
-      selected : null,
       err : "",
-      btn: 0,
       length: 0,
       data: [],
     };
