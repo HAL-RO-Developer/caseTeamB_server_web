@@ -5,7 +5,7 @@
             </header>
             <center>
      <section class="modal-card-body">
-    <button class="button" type="button" @click="child">子ども登録　</button>
+    <button class="button" type="button" @click="child">子ども登録</button>
      </section>
 
      <section class="modal-card-body">
@@ -13,10 +13,10 @@
      </section>
 
      <section class="modal-card-body">
-    <button class="button" type="button" @click="logout">ログアウト　</button>
+    <button class="button" type="button" @click="logout">ログアウト</button>
     </section>
      </center>
-    <under-tab :index=2 ></under-tab>
+    <under-tab :index=2></under-tab>
 </div>
 </template>
 
