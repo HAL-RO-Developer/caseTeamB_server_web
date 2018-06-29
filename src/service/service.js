@@ -1,6 +1,6 @@
 import axios from 'axios'
 import auth from './auth'
-URL = 'https://caseteambserver-riqcctorzo.now.sh/';
+URL = 'https://caseteambserver-skeqoxkijp.now.sh/';
 const api = axios.create({
     baseURL: URL, // バックエンドB のURL:port を指定する
     headers: {
@@ -32,6 +32,10 @@ class Http {
     }
     getid() {
         return api.get('device')
+    }
+    delebutton(device_id) {
+       return api.delete('device/' +device_id, {
+        }) 
     }
     getgoal() {
         return new Promise((callback) => {

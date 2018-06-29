@@ -4,16 +4,18 @@
   <ul v-if="length">
         <li class="card" id = "state">状態</li>
         <li class="card" id = "id">ID</li>
+        <li id = "button"></li>
           </ul>
           
    <ul v-for= "i in length" v-bind:value="i" v-bind:key="i">
         <li  id = "state" class="card"><p v-if="data[i-1]['device_alive'] == false" id="false">&nbsp;</p></li>
         <li  id = "state" class="card"><p v-if="data[i-1]['device_alive'] == true" id="true">&nbsp;</p></li>
         <li class="card" id = "id" c>{{data[i-1]['device_id']}}</li>
+        <li><button id = "button" class="button" @click="dele(data[i-1]['device_id']);">削除</button></li>
           </ul>
               <under-tab :index=0 ></under-tab>
               <center>
-        <button id = "button" class="button" @click="pin" v-if="err || length != 0">pin</button>
+        <button class="button" @click="pin" v-if="err || length != 0">pin</button>
               </center>
 
 </div>
@@ -39,9 +41,8 @@ export default {
   },
   methods: {
     dele(id) {
-      console.log("child_id:%dを消します", id);
       http
-        .delechild(String(id))
+        .delebutton(String(id))
         .then(response => {
           console.log(response.data);
           this.set();
@@ -77,11 +78,15 @@ export default {
 <style>
 #state{
     float: left;
-    width: 20%;
+    width: 5%;
 }
 #id{
  float: left;
- width: 80%;
+ width: 50%;
+}
+#button{
+ float: left;
+ width: 15%;
 }
 #err{
   text-align: center;
