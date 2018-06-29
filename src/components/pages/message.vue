@@ -1,6 +1,7 @@
 <template>
 <div>
-  <ul>
+  <p id = "err">{{err}}</p>
+  <ul v-if="length">
         <li class="card" id = "content">目標</li>
         <li class="card" id = "number">回数</li>
         <li class="card" id = "message">メッセージ</li>
@@ -19,6 +20,10 @@
 </template>
 
 <script>
+import http from "../../service/service";
+import axios from "axios";
+import auth from "../../service/auth";
+
 export default {
   data() {
     return {
@@ -28,28 +33,57 @@ export default {
       data: []
     };
   },
-
-}
+  created: function() {
+    this.set();
+  },
+  methods: {
+    set() {
+      http
+        .getmessage()
+        .then(response => {
+          console.log(response);
+          this.data = response.data.messages;
+          this.length = this.data["length"];
+          console.log("%d",this.length);
+        })
+        .catch(error => {
+          console.log(error.response);
+          this.err = error.response.data.error;
+          this.data = new Array();
+          this.length = 0;
+        });
+    }
+  }
+};
 </script>
 
 <style>
-#content,#number{
+#content {
   float: left;
-  width: 10%;
+  width: 30%;
   text-align: center;
-  height:  2em;
+  height: 2em;
 }
-#message{
-  float: left;
-  width: 65%;
-  text-align: center;
-  height:  2em;
-
-}
-#button{
+#number {
   float: left;
   width: 15%;
   text-align: center;
-  height:  2em;
+  height: 2em;
+}
+#message {
+  float: left;
+  width: 40%;
+  text-align: center;
+  height: 2em;
+}
+#button {
+  float: left;
+  width: 15%;
+  text-align: center;
+  height: 2em;
+}
+#err {
+  text-align: center;
+  color: RED;
 }
 </style>

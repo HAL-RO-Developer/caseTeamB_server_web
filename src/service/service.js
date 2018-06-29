@@ -101,6 +101,10 @@ class Http {
        return api.delete('child/' +child_id, {
         }) 
     }
+    getmessage(){
+        return api.get('/goal/message')
+
+    }
 }
 var http = new Http()
 export default http;
