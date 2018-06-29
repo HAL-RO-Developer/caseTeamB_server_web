@@ -1,5 +1,6 @@
 <template>
 <div id= "pin">
+<p id = "err">{{err}}</p>
 <h1 id = "box">
     {{pin}} 
 </h1>
@@ -26,12 +27,14 @@ export default {
         this.data = response.data.children;
         this.length =  this.data['length' ];
       })
-      .catch(function(error) {
+      .catch(error =>{
+        this.err = error.response.data.error;
         console.log(error.response);
       });
   },
     data() {
         return {
+            err: "",
             length: 0 ,
             data : "",
             pin : "",
@@ -56,6 +59,10 @@ export default {
 </script>
 
 <style>
+#err{
+  text-align: center;
+  color: RED;
+}
 #pin{
     text-align: center;
 }

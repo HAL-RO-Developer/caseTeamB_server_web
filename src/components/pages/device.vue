@@ -8,8 +8,7 @@
           </ul>
           
    <ul v-for= "i in length" v-bind:value="i" v-bind:key="i">
-        <li  id = "state" class="card"><p v-if="data[i-1]['device_alive'] == false" id="false">&nbsp;</p></li>
-        <li  id = "state" class="card"><p v-if="data[i-1]['device_alive'] == true" id="true">&nbsp;</p></li>
+        <li  id = "state" class="card"><p>{{data[i-1]['device_alive']}}</p></li>
         <li class="card" id = "id" c>{{data[i-1]['device_id']}}</li>
         <li><button id = "button" class="button" @click="dele(data[i-1]['device_id']);">削除</button></li>
           </ul>
@@ -78,24 +77,24 @@ export default {
 <style>
 #state{
     float: left;
-    width: 5%;
+    width: 15%;
+    height: 2em;
+
 }
 #id{
  float: left;
- width: 50%;
+ width: 70%;
+height: 2em;
+
 }
 #button{
  float: left;
  width: 15%;
+ height: 2em;
+
 }
 #err{
   text-align: center;
   color: RED;
-}
-#false{
-  background: red;
-}
-#true{
-  background: green;
 }
 </style>
