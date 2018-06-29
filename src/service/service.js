@@ -71,7 +71,7 @@ class Http {
     }
     */
     addgoal(button_id, goal) {
-        return api.post('goal/goal', {
+        return api.post('goal/goal/', {
             child_id,
             content,
             criteria,
@@ -79,7 +79,7 @@ class Http {
         })
     }
     getgoal(){
-        return api.get('goal/goal')
+        return api.get('goal/goal/')
     }
     addchild(nickname, birthday, sex) {
         return api.post('child', {
