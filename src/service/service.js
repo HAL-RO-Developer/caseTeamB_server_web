@@ -37,6 +37,7 @@ class Http {
        return api.delete('device/' +device_id, {
         }) 
     }
+    /*
     getgoal() {
         return new Promise((callback) => {
             var res = {
@@ -68,6 +69,7 @@ class Http {
             callback(res)
         })
     }
+    */
     addgoal(button_id, goal) {
         return api.post('goal/goal', {
             button_id,
@@ -75,6 +77,7 @@ class Http {
 
         })
     }
+    getgoal
     addchild(nickname, birthday, sex) {
         return api.post('child', {
             nickname,
