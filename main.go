@@ -19,6 +19,7 @@ func GetRouter() *gin.Engine {
 		c.HTML(200, "index.html", nil)
 	})
 	// foo!!
+	// hoge
 	return r
 
 }
