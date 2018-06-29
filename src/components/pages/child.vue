@@ -4,7 +4,7 @@
     <form>
  <footer class="modal-card-foot">
     <h1>子ども　登録</h1>
-     </footer>
+</footer>
     <section class="modal-card-body">
    <b-field label="Name">
                     <b-input
