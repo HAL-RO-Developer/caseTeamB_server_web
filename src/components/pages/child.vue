@@ -1,4 +1,5 @@
 <template>
+
 <div id = "form" class="modal-card" style="width: auto">
     <p v-if="err" id = "err">{{err}}</p>
     <form>
