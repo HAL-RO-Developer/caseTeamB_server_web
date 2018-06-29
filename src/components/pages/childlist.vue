@@ -89,5 +89,6 @@ ul{
    width: 45%;
    float: left;
    height: 2em;
+   text-align: center;
  } 
 </style>
