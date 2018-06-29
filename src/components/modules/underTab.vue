@@ -26,7 +26,7 @@ export default {
                     this.$router.push({path:"/device"})
                     break;
                 case 1:
-                    this.$router.push({path:"/"})
+                    this.$router.push({path:"/goal/list"})
                     break;
                 case 2:
                     this.$router.push({path:"/settings"})

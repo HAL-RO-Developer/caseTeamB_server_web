@@ -1,5 +1,8 @@
 <template>
+<div>
   <b-table @click="goal" :data="data" :columns="columns"></b-table>
+  <under-tab :index=1></under-tab>
+</div>
 </template>
 
 
