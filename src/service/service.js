@@ -77,7 +77,6 @@ class Http {
 
         })
     }
-    getgoal
     addchild(nickname, birthday, sex) {
         return api.post('child', {
             nickname,
