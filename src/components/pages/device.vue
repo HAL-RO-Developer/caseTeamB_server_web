@@ -2,16 +2,15 @@
 <div>
   <p id = "err">{{err}}</p>
   <ul v-if="length">
-        <li class="card" id = "state">状態</li>
-        <li class="card" id = "id">ID</li>
-        <li id = "button">&nbsp;</li>
+        <li class="card" id = "name">デバイス</li>
+        <li class="card" id = "child">子ども</li>
+        <li  id = "button">&nbsp;</li>
           </ul>
           
    <ul v-for= "i in length" v-bind:value="i" v-bind:key="i">
-        <li  id = "true" class="card" v-if="data[i-1]['device_alive'] == true">&nbsp;</li>
-        <li  id = "false" class="card" v-if="data[i-1]['device_alive'] == false">&nbsp;</li>
-        <li class="card" id = "id" >{{data[i-1]['device_id']}}</li>
-        <li><button id = "button" class="button" @click="dele(data[i-1]['device_id']);">削除</button></li>
+        <li v-for="a in data[i-1]['child_devices'].length" v-bind:value="a" v-bind:key="a" class="card" id = "name" >{{data[i-1]['child_devices'][a-1]}}</li>
+        <li v-for="a in data[i-1]['child_devices'].length" v-bind:value="a" v-bind:key="a" class="card" id = "child" >{{data[i-1]['nickname']}}</li>
+        <li v-for="a in data[i-1]['child_devices'].length" v-bind:value="a" v-bind:key="a"><button id = "button" class="button" @click="dele(data[i-1]['child_devices'][a-1])">削除</button></li> 
           </ul>
               <under-tab :index=0 ></under-tab>
               <center>
@@ -55,7 +54,7 @@ export default {
       http
         .getid()
         .then(response => {
-          console.log(response);
+          console.log(response.data);
           this.data = response.data.devices;
           this.length = this.data["length"];
           //console.log("%d",this.length);
@@ -74,20 +73,14 @@ export default {
 };
 </script>
 <style>
-#state {
+#name,#child {
   float: left;
-  width: 10%;
-  height: 2em;
-  text-align: center;
-}
-#id {
-  float: left;
-  width: 75%;
+  width: 42.5%;
   height: 2em;
   text-align: center;
 }
 #button {
-  float: left;
+  float: right;
   width: 15%;
   height: 2em;
 }

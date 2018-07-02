@@ -66,8 +66,8 @@ export default {
       http
         .signin(this.name, this.password)
         .then(response => {
-          console.log("then");
           console.log(response.data.token);
+          console.log("then");
           auth.SetToken(response.data.token);
           this.$router.push({ path: "/device" });
         })
