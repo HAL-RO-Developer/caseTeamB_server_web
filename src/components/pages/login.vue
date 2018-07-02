@@ -69,7 +69,6 @@ export default {
           console.log(response.data.token);
           console.log("then");
           auth.SetToken(response.data.token);
-          console.log(response.data.token);
           this.$router.push({ path: "/device" });
         })
         .catch(error => {
