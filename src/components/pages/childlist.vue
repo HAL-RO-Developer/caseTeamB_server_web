@@ -11,7 +11,7 @@
         <li class="card" id = "id">{{data[i-1]['child_id']}}</li>
         <li class="card" id = "name">{{data[i-1]['nickname']}}</li>
         <li><button id = "button" class="button" @click="dele(data[i-1]['child_id']);">削除</button></li>
-          </ul>
+        </ul>
               <under-tab :index=2 ></under-tab>
 
 </div>
@@ -26,9 +26,9 @@ import auth from "../../service/auth";
 export default {
   data() {
     return {
-      err : "",
+      err: "",
       length: 0,
-      data: [],
+      data: []
     };
   },
   created: function() {
@@ -46,7 +46,6 @@ export default {
         .catch(error => {
           console.log(error.response.data.error);
           this.err = error.response.data.error;
-
         });
     },
     set() {
@@ -56,7 +55,6 @@ export default {
           console.log(response);
           this.data = response.data.children;
           this.length = this.data["length"];
-          //console.log("%d",this.length);
         })
         .catch(error => {
           console.log(error.response);
@@ -70,23 +68,23 @@ export default {
 </script>
 
 <style>
- 
-#err{
+#err {
   text-align: center;
   color: RED;
 }
-ul{
+ul {
   text-align: center;
   width: 100%;
 }
-#button{
+#button {
   width: 15%;
   height: 2em;
 }
- #id,#name{ 
-   width: 42.5%;
-   float: left;
-   height: 2em;
-   text-align: center;
- } 
+#id,
+#name {
+  width: 42.5%;
+  float: left;
+  height: 2em;
+  text-align: center;
+}
 </style>
