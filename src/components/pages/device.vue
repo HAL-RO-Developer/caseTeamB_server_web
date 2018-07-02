@@ -11,6 +11,7 @@
   <p id = "device" class="card">{{data[i-1]['child_devices'][a-1]}}</p>
   <button id = "button" class="button" @click="dele(data[i-1]['child_devices'][a-1])">削除</button>
   </div>
+  
 </div>
 </div>
 
@@ -53,7 +54,7 @@ export default {
         })
         .catch(error => {
           length = 0;
-          
+
         });
     },
     pin() {
