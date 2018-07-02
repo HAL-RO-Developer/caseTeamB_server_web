@@ -1,7 +1,6 @@
 <template>
 
 <div id = "form" class="modal-card" style="width: auto">
-    <p v-if="err" id = "err">{{err}}</p>
     <form>
  <footer class="modal-card-foot">
     <h1>子ども　登録</h1>
@@ -61,7 +60,6 @@ export default {
       name: "",
       sex: null,
       date: new Date(),
-      err : ""
     };
   },
   methods: {
@@ -77,7 +75,6 @@ export default {
         })
         .catch(error => {
           console.log(error.response.data);
-          this.err = error.response.data.error;
         });
      
     }
@@ -85,8 +82,4 @@ export default {
 };
 </script>
 
-<style>
-#err {
-  color: red;
-}
-</style>
+

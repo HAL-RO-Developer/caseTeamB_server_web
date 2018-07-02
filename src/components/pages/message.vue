@@ -8,7 +8,7 @@
         <li id = "button"></li>
           </ul>
  <ul v-for= "i in length" v-bind:value="i" v-bind:key="i">
-        <li class="card" id = "content">{{data[i-1]['content']}}</li>
+        <li class="card" id = "id" v-for="a in data[i-1]['child_messages'].length" v-bind:value="a" v-bind:key="a">{{data[i-1]['child_messages'][a-1]}}</li>
         <li class="card" id = "number">{{data[i-1]['message_call']}}</li>
         <li class="card" id = "message">{{data[i-1]['message']}}</li>
         <li><button id = "button" class="button" >変更</button></li>
