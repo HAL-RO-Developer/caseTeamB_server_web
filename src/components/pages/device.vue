@@ -13,6 +13,7 @@
   <button id = "button" class="button" @click="dele(data[i-1]['child_devices'][a-1])">削除</button>
   </div>
     <button id = "pin" class="button" @click="pin();" >pin</button>
+              <under-tab :index=0 ></under-tab>
 
 </div>
 </div>
@@ -90,7 +91,7 @@ export default {
   height: 2em;
 }
 #pin{
-margin-top: 10%;
+margin-top: 5%;
 margin-left: 50%;
   
 }
