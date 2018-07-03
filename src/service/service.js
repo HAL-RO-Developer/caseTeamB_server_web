@@ -11,7 +11,7 @@ const api = axios.create({
 });
 
 class Http {
-    constructor() {}
+    constructor() { }
     signin(name, pass) {
         return api.post('signin', {
             name,
@@ -34,8 +34,8 @@ class Http {
         return api.get('device')
     }
     delebutton(device_id) {
-       return api.delete('device/' +device_id, {
-        }) 
+        return api.delete('device/' + device_id, {
+        })
     }
     /*
     getgoal() {
@@ -70,16 +70,20 @@ class Http {
         })
     }
     */
-    addgoal(button_id, goal) {
-        return api.post('goal/goal', {
+    addgoal(child_id, content, criteria, deadline) {
+        return api.post('/goal/goal', {
             child_id,
             content,
             criteria,
             deadline
         })
     }
-    getgoal(){
-        return api.get('goal/goal')
+    getgoal() {
+        return api.get('/goal/goal')
+    }
+    delegoal(goal_id) {
+        return api.delete('/goal/goal' + goal_id, {
+        })
     }
     addchild(nickname, birthday, sex) {
         return api.post('child', {
@@ -98,10 +102,10 @@ class Http {
              child_id
         })
         */
-       return api.delete('child/' +child_id, {
-        }) 
+        return api.delete('child/' + child_id, {
+        })
     }
-    getmessage(){
+    getmessage() {
         return api.get('/goal/message')
 
     }

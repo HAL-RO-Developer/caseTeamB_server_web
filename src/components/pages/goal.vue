@@ -7,39 +7,38 @@
         <p class="modal-card-title">目標登録</p>
     </header>
 <section>
-        <b-field label="Child_id">
+    <b-field>
+        <b-select type="number" v-model="child_id" 
+        placeholder="子どもID" expanded>
+            <option v-for="option in options"
+            :key="option.child_id" :value="option.child_id">
+            {{option.nickname}}</option>
+        </b-select>
+    </b-field>
+
+    <b-field>
+        <b-input
+            v-model="content"
+            placeholder="目標名"
+            expanded
+            >
+        </b-input>
+    </b-field>
+        <b-field>
             <b-input
                 type="number"
-                v-model="id"
-                placeholder="子どもID"
-                required
-                >
-            </b-input>
-        </b-field>
-        <b-field label="content">
-            <b-input
-                type="string"
-                v-model="content"
-                placeholder="目標名"
-                required
-                >
-            </b-input>
-        </b-field>
-        <b-field label="criteria">
-            <b-input
-                type="number"
-                v-model="name"
+                v-model="criteria"
                 placeholder="達成目標数"
-                required
+                expanded
                 >
             </b-input>
         </b-field>
-    <b-field label="Select a deadline">
+    <b-field>
         <b-datepicker
             placeholder="Click to select..."
             icon="calendar-today"
             :readonly="false"
-            v-model="date"
+            v-model="deadline"
             >
         </b-datepicker>
     </b-field>  
@@ -60,39 +59,49 @@ import auth from "../../service/auth";
 import http from "../../service/service";
 export default {
   created: function() {
-    http
-      .getid()
-      .then(response => {
-        console.log(response);
-        this.options = response.data.goal_id;
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+    this.set();
   },
   data() {
     return {
-      options: "id",
-      child_id: "",
+      options: [],
+      child_id: null,
       content: "",
-      criteria: new Date(),
-      deadline: null,
+      criteria: null,
+      deadline: new Date(),
       ok: "",
       err: ""
     };
   },
   methods: {
     onclick() {
-        var date = moment(this.date);
-        date.local();
-        http.addgoal(this.child_id, this.content, this.criteria, date.format("YYYY-MM-DD"))
+      var deadline = moment(this.deadline);
+      deadline.local();
+      http
+        .addgoal(
+          Number(this.child_id),
+          this.content,
+          Number(this.criteria),
+          deadline.format("YYYY-MM-DD")
+        )
         .then(response => {
-            console.log(response.data.success);
-            this.$router.push({ path: '/goal/goal/' });
+          console.log(response.data.success);
         })
         .catch(error => {
-            console.log(error.response.data);
-            this.err = error.response.data.error;
+          console.log(error.response.data);
+          this.err = error.response.data.error;
+        });
+    },
+    set() {
+      http
+        .getchild()
+        .then(response => {
+          console.log(response);
+          this.options = response.data.children;
+        })
+        .catch(error => {
+          console.log(error.response);
+          this.err = error.response.data.error;
+          this.options = new Array();
         });
     }
   }
