@@ -1,6 +1,12 @@
 <template>
 <div>
-  <b-table @click="goal" :data="data" :columns="columns"></b-table>
+  <p id = "err">{{err}}</p>
+  <ul v-if="length">
+    <li class="card" id = "child_id">子ども名</li>
+  </ul>
+  <ul v-for= "i in length" v-bind:value="i" v-bind:key="i">
+        <li class="card" id = "child_id">{{lists[i-1]['child_id']}}</li>
+  </ul>
   <under-tab :index=1></under-tab>
 </div>
 </template>
