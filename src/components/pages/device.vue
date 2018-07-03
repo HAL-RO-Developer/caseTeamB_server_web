@@ -5,13 +5,15 @@
   <p id = "device" class="card">デバイス</p>
   <p id = "button" >&nbsp;</p>
 </div>
+
 <div v-for= "i in length" v-bind:value="i" v-bind:key="i">
   <div  v-for="a in data[i-1]['child_devices'].length" v-bind:value="a" v-bind:key="a"> 
   <p id="name" class="card">{{data[i-1]['nickname']}} </p>
   <p id = "device" class="card">{{data[i-1]['child_devices'][a-1]}}</p>
   <button id = "button" class="button" @click="dele(data[i-1]['child_devices'][a-1])">削除</button>
   </div>
-  
+    <button id = "pin" class="button" @click="pin();" >pin</button>
+
 </div>
 </div>
 
@@ -79,10 +81,17 @@ export default {
   width: 40%;
   height: 2em;
   float: left;
+  text-align: center;
+
 }
 #button {
   float: left;
   width: 20%;
   height: 2em;
+}
+#pin{
+margin-top: 10%;
+margin-left: 50%;
+  
 }
 </style>
