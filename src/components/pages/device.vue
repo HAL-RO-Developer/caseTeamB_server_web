@@ -12,10 +12,10 @@
   <p id = "device" class="card">{{data[i-1]['child_devices'][a-1]}}</p>
   <button id = "button" class="button" @click="dele(data[i-1]['child_devices'][a-1])">削除</button>
   </div>
-    <button id = "pin" class="button" @click="pin();" >pin</button>
-              <under-tab :index=0 ></under-tab>
-
 </div>
+    <under-tab :index=0 ></under-tab>
+    <button id = "next" class="button" @click="pin();" >pin</button>
+
 </div>
 
 </template>
@@ -41,6 +41,7 @@ export default {
         .delebutton(String(id))
         .then(response => {
           console.log(response.data);
+          this.data = "";
           this.set();
         })
         .catch(error => {});
@@ -90,7 +91,7 @@ export default {
   width: 20%;
   height: 2em;
 }
-#pin{
+#next{
 margin-top: 5%;
 margin-left: 50%;
   
