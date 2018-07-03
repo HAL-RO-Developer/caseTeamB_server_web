@@ -16,6 +16,7 @@
   <button id = "button" class="button" @click="dele(data[i-1]['child_devices'][a-1])">削除</button>
 </div>
 </div>
+    <button id = "next" class="button">追加 編集</button>
       <under-tab :index= 1 ></under-tab>
 </div>
 </template>
@@ -88,5 +89,9 @@ export default {
   text-align: center;
   height: 2em;
 }
-
+#next{
+margin-top: 5%;
+margin-left: 50%;
+  
+}
 </style>

@@ -68,11 +68,6 @@ export default {
 };
 </script>
 <style>
-#top {
-  float: left;
-  width: 50%;
-  height: 2em;
-}
 #name {
   float: left;
   width: 40%;
