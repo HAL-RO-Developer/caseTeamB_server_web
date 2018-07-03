@@ -37,6 +37,10 @@ class Http {
         return api.delete('device/' + device_id, {
         })
     }
+    delemessage(request) {
+        return api.delete('goal/message/' + request, {
+        })
+    }
     /*
     getgoal() {
         return new Promise((callback) => {

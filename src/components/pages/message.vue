@@ -4,7 +4,7 @@
      <p class="card" id="name">名前</p>
      <p class="card" id="content">目標</p>
      <p class="card" id="call">回</p>
-     <p class="card" id="mesa">メッセージ</p>
+     <p class="card" id="messa">メッセージ</p>
      <p id = "button">&nbsp;</p>
   </div>
 <div v-for= "i in length" v-bind:value="i" v-bind:key="i">
@@ -12,11 +12,11 @@
   <p class="card" id="name">{{data[i-1][['nickname']]}} </p>
   <p class="card" id="content">{{data[i-1]['child_messages'][a-1]['content']}}</p>
   <p class="card" id="call">{{data[i-1]['child_messages'][a-1]['message_call']}}</p>
-  <p class="card" id="mesa">{{data[i-1]['child_messages'][a-1]['message']}}</p>
-  <button id = "button" class="button" @click="dele(data[i-1]['child_devices'][a-1])">削除</button>
+  <p class="card" id="messa">{{data[i-1]['child_messages'][a-1]['message']}}</p>
+  <button id = "button" class="button" @click="dele(data[i-1]['child_messages'][a-1]['goal_id'],data[i-1]['child_messages'][a-1]['message_call'])">削除</button>
 </div>
 </div>
-    <button id = "next" class="button">追加 編集</button>
+    <button id = "next" class="button" @click="onclick">追加 編集</button>
       <under-tab :index= 1 ></under-tab>
 </div>
 </template>
@@ -39,6 +39,17 @@ export default {
     this.set();
   },
   methods: {
+    dele(id,call){
+ var repuest = String(id) + '/' + String(call)
+      http
+        .delemessage(repuest)
+        .then(response => {
+          console.log(response.data);
+          this.data = "";
+          this.set();
+        })
+        .catch(error => {});
+    },
     set() {
       http
         .getmessage()
@@ -52,6 +63,9 @@ export default {
           this.data = new Array();
           this.length = 0;
         });
+    },
+    onclick(){
+      this.$router.push({ path: "/message/add" });
     }
   }
 };
@@ -77,7 +91,7 @@ export default {
   text-align: center;
   height: 2em;
 }
-#mesa{
+#messa{
   width: 35%;
   float: left;
   text-align: center;
