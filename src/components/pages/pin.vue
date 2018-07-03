@@ -44,7 +44,7 @@ export default {
     },
     methods:{
        onclick(){
-           http.getpin(this.id) 
+           http.getpin(this.data[this.id-1]["child_id"]) 
                 .then( (response) => {
                     console.log(response.data.pin);
                     this.pin = response.data.pin
