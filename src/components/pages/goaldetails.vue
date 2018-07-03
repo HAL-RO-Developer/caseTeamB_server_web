@@ -4,12 +4,10 @@
     <p class="modal-card-title">目標詳細</p>
   </header>
 <section>
-
   <b-tabs v-model="activeTab" position="is-centered">
-    <b-tab-item label="日別"><child></child></b-tab-item>
-    <b-tab-item label="週別"></b-tab-item>
+    <b-tab-item label="日別"><goal></goal></b-tab-item>
+    <b-tab-item label="週別"><goal></goal></b-tab-item>
   </b-tabs>
-
   <center>
     <button class="button" type="button" @click="message">目標メッセージ</button>
   </center>
@@ -23,7 +21,7 @@ import moment from "moment";
 import axios from "axios";
 import http from "../../service/service";
 import auth from "../../service/auth";
-import Child from "./child.vue"
+import Goal from "./goal.vue"
 export default {
   data() {
     return {
@@ -41,7 +39,7 @@ export default {
     }
   },
   components: {
-    Child
+    Goal
   }
 };
 </script>

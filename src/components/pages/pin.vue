@@ -4,7 +4,7 @@
 <h1 id = "box">
     {{pin}} 
 </h1>
-    <b-select placeholder="Select a name">
+    <b-select placeholder="Select a name" v-model ="id">
 <option v-for="a in length" v-bind:value="a" v-bind:key="a">{{data[a-1]['nickname']}}</option>
     </b-select>
 <button  class="button" type="button" @click="onclick" >    

@@ -16,44 +16,54 @@
 import axios from "axios";
 import http from "../../service/service";
 import auth from "../../service/auth";
+import Goallistview from "./goallistview.vue";
 export default {
-  data() {
-    return {
-      lists: [],
-      ok: "",
-      err: ""
-    };
-  },
-  created: function() {
-    this.set();
-  },
-  methods: {
-    delete(id) {
-      http
-        .delegoal(String(id))
-        .then(response => {
-          console.log(response.data);
-          this.set();
-        })
-        .catch(error => {
-          console.log(error.response.data.error);
-          this.err = error.response.data.error;
-        });
-    }
-  },
-  set() {
+  created() {
     http
       .getgoal()
       .then(response => {
         console.log(response);
-        this.lists = response.data.goals;
-        this.length = this.goals["length"];
+        this.data = response.data.goals;
       })
-      .catch(error => {
-        console.log(error.response);
-        this.err = error.response.data.error;
-        this.lists = new Array();
+      .catch(function(error) {
+        console.log(error);
       });
+  },
+  data() {
+    return {
+      data: [],
+      columns: [
+        {
+          field: "id",
+          label: "ID",
+          numeric: true
+        },
+        {
+          field: "name",
+          label: "目標名"
+        },
+        {
+          field: "update_at",
+          label: "最終達成日"
+        },
+        {
+          field: "total",
+          label: "トータル"
+        },
+        {
+          field: "curentcnt",
+          label: "現在の回数"
+        }
+      ]
+    };
+  },
+  methods: {
+    goal() {
+      this.$router.push({ path: "/child" });
+    }
+  },
+  components: {
+    Goallistview
   }
 };
 </script>
