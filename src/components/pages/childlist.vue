@@ -1,17 +1,16 @@
 <template>
 <div>
-  <p id = "err">{{err}}</p>
-  <ul v-if="length">
-        <li class="card" id = "id">ID</li>
-        <li class="card" id = "name">名前</li>
-        <li id = "button">&nbsp;</li>
-          </ul>
+  <div v-if="length">
+        <p class="card" id = "id">ID</p>
+        <p class="card" id = "name">名前</p>
+        <p id = "button">&nbsp;</p>
+  </div>
           
-   <ul v-for= "i in length" v-bind:value="i" v-bind:key="i">
-        <li class="card" id = "id">{{data[i-1]['child_id']}}</li>
-        <li class="card" id = "name">{{data[i-1]['nickname']}}</li>
-        <li><button id = "button" class="button" @click="dele(data[i-1]['child_id']);">削除</button></li>
-        </ul>
+   <div v-for= "i in length" v-bind:value="i" v-bind:key="i">
+        <p class="card" id = "id">{{data[i-1]['child_id']}}</p>
+        <p class="card" id = "name">{{data[i-1]['nickname']}}</p>
+        <button id = "button" class="button" @click="dele(data[i-1]['child_id']);">削除</button>
+        </div>
               <under-tab :index=2 ></under-tab>
 
 </div>

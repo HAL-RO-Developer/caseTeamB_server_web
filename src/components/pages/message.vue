@@ -1,22 +1,23 @@
 <template>
 <div>
-  <p id = "err">{{err}}</p>
-  <ul v-if="length">
-        <li class="card" id = "content">目標</li>
-        <li class="card" id = "number">回数</li>
-        <li class="card" id = "message">メッセージ</li>
-        <li id = "button"></li>
-          </ul>
- <ul v-for= "i in length" v-bind:value="i" v-bind:key="i">
-        <li class="card" id = "id" v-for="a in data[i-1]['child_messages'].length" v-bind:value="a" v-bind:key="a">{{data[i-1]['child_messages'][a-1]}}</li>
-        <li class="card" id = "number">{{data[i-1]['message_call']}}</li>
-        <li class="card" id = "message">{{data[i-1]['message']}}</li>
-        <li><button id = "button" class="button" >変更</button></li>
-          </ul>
-
+    <div v-if="length">
+     <p class="card" id="name">名前</p>
+     <p class="card" id="content">目標</p>
+     <p class="card" id="call">回</p>
+     <p class="card" id="mesa">メッセージ</p>
+     <p id = "button">&nbsp;</p>
+  </div>
+<div v-for= "i in length" v-bind:value="i" v-bind:key="i">
+<div  v-for="a in data[i-1]['child_messages'].length" v-bind:value="a" v-bind:key="a"> 
+  <p class="card" id="name">{{data[i-1][['nickname']]}} </p>
+  <p class="card" id="content">{{data[i-1]['child_messages'][a-1]['content']}}</p>
+  <p class="card" id="call">{{data[i-1]['child_messages'][a-1]['message_call']}}</p>
+  <p class="card" id="mesa">{{data[i-1]['child_messages'][a-1]['message']}}</p>
+  <button id = "button" class="button" @click="dele(data[i-1]['child_devices'][a-1])">削除</button>
+</div>
+</div>
       <under-tab :index= 1 ></under-tab>
 </div>
-
 </template>
 
 <script>
@@ -43,12 +44,10 @@ export default {
         .then(response => {
           console.log(response);
           this.data = response.data.messages;
-          this.length = this.data["length"];
-          console.log("%d",this.length);
+          this.length = this.data[0]['child_messages']["length"];
         })
         .catch(error => {
           console.log(error.response);
-          this.err = error.response.data.error;
           this.data = new Array();
           this.length = 0;
         });
@@ -58,21 +57,28 @@ export default {
 </script>
 
 <style>
-#content {
+#card{
+  width: 21.25%;
   float: left;
-  width: 30%;
+  text-align: center;
+  height: 2em;
+
+}
+#name,#content{
+  width: 20%;
+  float: left;
   text-align: center;
   height: 2em;
 }
-#number {
+#call{
+  width: 10%;
   float: left;
-  width: 15%;
   text-align: center;
   height: 2em;
 }
-#message {
+#mesa{
+  width: 35%;
   float: left;
-  width: 40%;
   text-align: center;
   height: 2em;
 }
@@ -82,8 +88,5 @@ export default {
   text-align: center;
   height: 2em;
 }
-#err {
-  text-align: center;
-  color: RED;
-}
+
 </style>
