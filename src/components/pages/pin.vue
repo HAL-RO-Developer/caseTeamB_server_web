@@ -5,7 +5,7 @@
     {{pin}} 
 </h1>
     <b-select placeholder="Select a name" v-model ="id">
-<option v-for="a in length" v-bind:value="a" v-bind:key="a">{{data[a-1]['nickname']}}</option>
+<option v-for="a in length" v-bind:value="data[a-1]['child_id']" v-bind:key="a">{{data[a-1]['nickname']}}</option>
     </b-select>
 <button  class="button" type="button" @click="onclick" >    
   put
@@ -44,7 +44,7 @@ export default {
     },
     methods:{
        onclick(){
-           http.getpin(this.data[this.id-1]["child_id"]) 
+           http.getpin(this.id) 
                 .then( (response) => {
                     console.log(response.data.pin);
                     this.pin = response.data.pin
