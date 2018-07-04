@@ -1,6 +1,6 @@
 import axios from 'axios'
 import auth from './auth'
-URL = 'https://caseteambserver-miaagtxgej.now.sh/';
+URL = 'https://caseteambserver-aclennyyad.now.sh/';
 const api = axios.create({
     baseURL: URL, // バックエンドB のURL:port を指定する
     headers: {
