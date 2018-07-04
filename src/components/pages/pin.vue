@@ -1,5 +1,5 @@
 <template>
-<div id= "pin">
+<div id= "pin" v-if="ok == 1">
 <p id = "err">{{err}}</p>
 <h1 id = "box">
     {{pin}} 
@@ -26,6 +26,7 @@ export default {
       .then(response => {
         this.data = response.data.children;
         this.length =  this.data['length' ];
+        this.ok = 1;
       })
       .catch(error =>{
         this.err = error.response.data.error;
@@ -39,7 +40,8 @@ export default {
             data : "",
             pin : "",
             options : "hoge",
-            id : ""
+            id : "" ,
+            ok : ""
         }
     },
     methods:{

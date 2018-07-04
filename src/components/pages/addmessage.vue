@@ -1,13 +1,16 @@
 <template>
-        <div id = "form" class="modal-card" style="width: auto">
+        <div id = "form" class="modal-card" style="width: auto" v-if="ok == 1">
     <form>
         <header class="modal-card-head">
                 <p class="modal-card-title">メッセージ追加</p>
             </header>
                     <section class="modal-card-body">
+
+            <section v-for="a in length"  v-bind:key="a">
            <b-select placeholder="Select a name" v-model ="id" >
-<option v-for="a in length" v-bind:value="a" v-bind:key="a">{{data[a-1]['content']}}({{data[a-1]['nickname']}})</option>
+<option v-for="i in data[a-1]['child_goals'].length" v-bind:value="data[a-1]['child_goals'][i-1]['goal_id']" v-bind:key="i">{{data[a-1]['child_goals'][i-1]['content']}}({{data[a-1]['nickname']}})</option>
     </b-select>
+            </section>
         <b-field label="回数">
                     <b-input
                             type="Number"
@@ -44,7 +47,8 @@ export default {
       length: 0,
       id: "",
       call: null,
-      message: ""
+      message: "",
+      ok: ""
     };
   },
   created: function() {
@@ -58,16 +62,18 @@ export default {
           console.log(response);
           this.data = response.data.goals;
           this.length = this.data["length"];
+          this.ok = 1;
         })
         .catch(error => {
           console.log(error.response);
         });
-    } ,
-    onclick(){
-           http.addmessage(this.data[this.id-1]['goal_id'],Number(this.call),this.message)
+    },
+    onclick() {
+      http
+        .addmessage(this.id, Number(this.call), this.message)
         .then(response => {
           console.log(response.data.success);
-          this.$router.push({ path: '/message' });
+          this.$router.push({ path: "/message" });
         })
         .catch(error => {
           console.log(error.response.data);
