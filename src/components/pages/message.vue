@@ -56,7 +56,7 @@ export default {
         .then(response => {
           console.log(response);
           this.data = response.data.messages;
-          this.length = this.data[0]['child_messages']["length"];
+          this.length = this.data["length"];
         })
         .catch(error => {
           console.log(error.response);
@@ -106,6 +106,5 @@ export default {
 #next{
 margin-top: 5%;
 margin-left: 50%;
-  
 }
 </style>

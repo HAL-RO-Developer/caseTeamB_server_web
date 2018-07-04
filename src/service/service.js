@@ -75,7 +75,7 @@ class Http {
     }
     */
     addgoal(child_id, content, criteria, deadline) {
-        return api.post('/goal/goal', {
+        return api.post('goal/goal', {
             child_id,
             content,
             criteria,
@@ -83,10 +83,10 @@ class Http {
         })
     }
     getgoal() {
-        return api.get('/goal/goal')
+        return api.get('goal/goal')
     }
     delegoal(goal_id) {
-        return api.delete('/goal/goal' + goal_id, {
+        return api.delete('goal/goal' + goal_id, {
         })
     }
     addchild(nickname, birthday, sex) {
@@ -110,8 +110,16 @@ class Http {
         })
     }
     getmessage() {
-        return api.get('/goal/message')
+        return api.get('goal/message')
 
+    }
+    addmessage(goal_id, message_call, message) {
+        return api.post('goal/message', {
+            goal_id,
+            message_call,
+            message
+
+        })
     }
 }
 var http = new Http()

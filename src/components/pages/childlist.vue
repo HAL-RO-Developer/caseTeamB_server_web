@@ -1,13 +1,11 @@
 <template>
 <div>
   <div v-if="length">
-        <p class="card" id = "id">ID</p>
         <p class="card" id = "name">名前</p>
         <p id = "button">&nbsp;</p>
   </div>
           
    <div v-for= "i in length" v-bind:value="i" v-bind:key="i">
-        <p class="card" id = "id">{{data[i-1]['child_id']}}</p>
         <p class="card" id = "name">{{data[i-1]['nickname']}}</p>
         <button id = "button" class="button" @click="dele(data[i-1]['child_id']);">削除</button>
         </div>
@@ -79,9 +77,8 @@ ul {
   width: 15%;
   height: 2em;
 }
-#id,
 #name {
-  width: 42.5%;
+  width: 85%;
   float: left;
   height: 2em;
   text-align: center;
