@@ -17,7 +17,15 @@
 </div>
 </div>
     <button id = "next" class="button" @click="onclick">追加 編集</button>
+
+           <section>
+         <button  class="button" type="button" @click="goal"  id ="goal" >    
+          目標
+          </button>
+            </section>
       <under-tab :index= 1 ></under-tab>
+
+      
 </div>
 </template>
 
@@ -66,6 +74,9 @@ export default {
     },
     onclick(){
       this.$router.push({ path: "/message/add" });
+    } ,
+    goal(){
+            this.$router.push({ path: "/goal/details" });
     }
   }
 };

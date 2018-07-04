@@ -10,6 +10,11 @@
 <button  class="button" type="button" @click="onclick" >    
   put
 </button>
+<section>
+<button  class="button" type="button" @click="device"  id ="device" >    
+  デバイス一覧
+</button>
+</section>
     <under-tab :index=0></under-tab>
 </div>
 </template>
@@ -55,6 +60,10 @@ export default {
                 .catch(function (error) {
                     console.log(error.response.data);
                 }); 
+       } ,
+       device(){
+          this.$router.push({ path: "/device" });
+
        }
     }
 }
@@ -70,5 +79,8 @@ export default {
 }
 #box{
     border: solid #008080;
+}
+#device{
+ margin-top: 3%;
 }
 </style>

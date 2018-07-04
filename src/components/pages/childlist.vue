@@ -9,6 +9,11 @@
         <p class="card" id = "name">{{data[i-1]['nickname']}}</p>
         <button id = "button" class="button" @click="dele(data[i-1]['child_id']);">削除</button>
         </div>
+        <section>
+         <button  class="button" type="button" @click="setting"  id ="setting" >    
+          設定
+          </button>
+            </section>
               <under-tab :index=2 ></under-tab>
 
 </div>
@@ -61,7 +66,11 @@ export default {
           this.length = 0;
           this.data = new Array();
         });
-    }
+    } ,
+           setting(){
+          this.$router.push({ path: "/settings" });
+
+       }
   }
 };
 </script>
@@ -84,5 +93,8 @@ ul {
   float: left;
   height: 2em;
   text-align: center;
+}
+#setting{
+ margin-top: 3%;
 }
 </style>
