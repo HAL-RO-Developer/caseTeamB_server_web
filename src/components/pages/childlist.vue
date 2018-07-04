@@ -38,6 +38,8 @@ export default {
         .delechild(String(id))
         .then(response => {
           console.log(response.data);
+          this.length = 0;
+          this.data = new Array();
           this.set();
         })
         .catch(error => {
@@ -56,8 +58,8 @@ export default {
         .catch(error => {
           console.log(error.response);
           this.err = error.response.data.error;
-          this.data = new Array();
           this.length = 0;
+          this.data = new Array();
         });
     }
   }
