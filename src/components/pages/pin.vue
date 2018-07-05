@@ -67,10 +67,7 @@ export default {
 </script>
 
 <style>
-#err{
-  text-align: center;
-  color: RED;
-}
+
 #pin{
     text-align: center;
 }
