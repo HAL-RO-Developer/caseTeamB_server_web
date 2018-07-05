@@ -1,4 +1,5 @@
 <template>
+<div>
         <div id = "form" class="modal-card" style="width: auto" v-if="ok == 1">
     <form>
         <header class="modal-card-head">
@@ -28,12 +29,13 @@
                     </b-input>
                 </b-field>
             </section>
-            <under-tab :index=1></under-tab>
  <footer class="modal-card-foot">
     <button class="button" type="button" @click="onclick">決定</button>
      </footer>
     </form>
     </div>
+    <under-tab :index=1></under-tab>
+</div>
 </template>
 
 <script>
