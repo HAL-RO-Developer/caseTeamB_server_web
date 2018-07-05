@@ -1,7 +1,7 @@
 <template>
     <div class="modal-card" style="width: auto">
         <div>
-            <graph :chartData='chartData' :options='options' :width="900" :height="300"></graph>
+            <graph :chartData='chartData' :options='options' :width="900" :height="750"></graph>
             <button @click="fillData">ランダムデータ入力</button>
         </div>
         <under-tab :index='1'></under-tab>
