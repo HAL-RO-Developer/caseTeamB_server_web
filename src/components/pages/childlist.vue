@@ -82,11 +82,12 @@ ul {
   width: 100%;
 }
 #button {
-  width: 15%;
+  width: 20%;
   height: 2em;
+  text-align: center;
 }
 #name {
-  width: 85%;
+  width: 80%;
   float: left;
   height: 2em;
   text-align: center;

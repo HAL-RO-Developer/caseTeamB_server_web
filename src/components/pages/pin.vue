@@ -11,12 +11,12 @@
   put
 </button>
 <section>
-<button  class="button" type="button" @click="device"  id ="device" >    
-  デバイス
-</button>
 </section>
 </div>
     <under-tab :index=0></under-tab>
+    <button  class="button" type="button" @click="device"  id ="device" >    
+  デバイス
+</button>
 </div>
 </template>
 <script>
