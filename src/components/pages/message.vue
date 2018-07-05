@@ -54,6 +54,7 @@ export default {
         .then(response => {
           console.log(response.data);
           this.data = "";
+          this.length = 0;
           this.set();
         })
         .catch(error => {});

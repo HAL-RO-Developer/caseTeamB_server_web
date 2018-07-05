@@ -28,7 +28,6 @@ import auth from "../../service/auth";
 export default {
   data() {
     return {
-      err: "",
       length: 0,
       data: []
     };
@@ -49,7 +48,6 @@ export default {
         })
         .catch(error => {
           console.log(error.response.data.error);
-          this.err = error.response.data.error;
         });
     },
     set() {
@@ -62,7 +60,6 @@ export default {
         })
         .catch(error => {
           console.log(error.response);
-          this.err = error.response.data.error;
           this.length = 0;
           this.data = new Array();
         });

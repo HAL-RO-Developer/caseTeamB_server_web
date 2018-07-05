@@ -1,6 +1,6 @@
 <template>
+<div>
 <div id= "pin" v-if="ok == 1">
-<p id = "err">{{err}}</p>
 <h1 id = "box">
     {{pin}} 
 </h1>
@@ -15,6 +15,7 @@
   デバイス一覧
 </button>
 </section>
+</div>
     <under-tab :index=0></under-tab>
 </div>
 </template>
@@ -34,13 +35,10 @@ export default {
         this.ok = 1;
       })
       .catch(error =>{
-        this.err = error.response.data.error;
-        console.log(error.response);
       });
   },
     data() {
         return {
-            err: "",
             length: 0 ,
             data : "",
             pin : "",
@@ -58,7 +56,6 @@ export default {
                      //alert(response);
                 }) 
                 .catch(function (error) {
-                    console.log(error.response.data);
                 }); 
        } ,
        device(){

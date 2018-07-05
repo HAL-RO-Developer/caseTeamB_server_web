@@ -42,6 +42,7 @@ export default {
         .then(response => {
           console.log(response.data);
           this.data = "";
+          this.length = 0;
           this.set();
         })
         .catch(error => {});
@@ -57,8 +58,6 @@ export default {
           //console.log("%d",this.length);
         })
         .catch(error => {
-          length = 0;
-
         });
     },
     pin() {
