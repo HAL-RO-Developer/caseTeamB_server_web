@@ -12,7 +12,7 @@
 </button>
 <section>
 <button  class="button" type="button" @click="device"  id ="device" >    
-  デバイス一覧
+  デバイス
 </button>
 </section>
 </div>
@@ -79,5 +79,6 @@ export default {
 }
 #device{
  margin-top: 3%;
+ float: left;
 }
 </style>
