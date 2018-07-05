@@ -45,7 +45,9 @@ export default {
           this.length = 0;
           this.set();
         })
-        .catch(error => {});
+        .catch(error => {
+
+        });
     },
     set() {
       http
@@ -78,7 +80,6 @@ export default {
   height: 2em;
   float: left;
   text-align: center;
-
 }
 #button {
   float: left;
@@ -88,6 +89,5 @@ export default {
 #next{
 margin-top: 5%;
 margin-left: 50%;
-  
 }
 </style>
