@@ -7,6 +7,7 @@ import Device from './components/pages/device.vue'
 import Child from './components/pages/child.vue'
 import Childlist from './components/pages/childlist.vue'
 import Message from './components/pages/message.vue'
+import AddMessage from './components/pages/addmessage.vue'
 import GoalList from './components/pages/goallistview.vue'
 import GoalDetails from './components/pages/goaldetails.vue'
 import Settings from './components/pages/settings.vue'
@@ -41,6 +42,7 @@ const routes = [
     { path: "/goal", component: Goal },
     { path: "/record", component: Record },
     { path: "/message", component: Message },
+    { path: "/message/add", component: AddMessage },
     { path: "*", component: NotFound },
 ]
 const router = new VueRouter({ mode: 'history', routes })

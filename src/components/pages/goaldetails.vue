@@ -43,6 +43,12 @@ export default {
     onWeek() {
       var week = "www";
     }
-  }
+  },
+  components: {
+    Child
+  } ,
+  message(){
+            this.$router.push({ path: "/message" });
+    }
 };
 </script>

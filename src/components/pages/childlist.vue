@@ -1,18 +1,20 @@
 <template>
 <div>
-  <p id = "err">{{err}}</p>
-  <ul v-if="length">
-        <li class="card" id = "id">ID</li>
-        <li class="card" id = "name">名前</li>
-        <li id = "button">&nbsp;</li>
-  </ul>
+  <div v-if="length">
+        <p class="card" id = "name">名前</p>
+        <p id = "button">&nbsp;</p>
+  </div>
           
-   <ul v-for= "i in length" v-bind:value="i" v-bind:key="i">
-      <li class="card" id = "id">{{data[i-1]['child_id']}}</li>
-      <li class="card" id = "name">{{data[i-1]['nickname']}}</li>
-      <li><button id = "button" class="button" @click="dele(data[i-1]['child_id']);">削除</button></li>
-    </ul>
-    <under-tab :index=2 ></under-tab>
+   <div v-for= "i in length" v-bind:value="i" v-bind:key="i">
+        <p class="card" id = "name">{{data[i-1]['nickname']}}</p>
+        <button id = "button" class="button" @click="dele(data[i-1]['child_id']);">削除</button>
+        </div>
+        <section>
+         <button  class="button" type="button" @click="setting"  id ="setting" >    
+          設定
+          </button>
+            </section>
+              <under-tab :index=2 ></under-tab>
 
 </div>
 
@@ -26,7 +28,6 @@ import auth from "../../service/auth";
 export default {
   data() {
     return {
-      err: "",
       length: 0,
       data: []
     };
@@ -41,11 +42,12 @@ export default {
         .delechild(String(id))
         .then(response => {
           console.log(response.data);
+          this.length = 0;
+          this.data = new Array();
           this.set();
         })
         .catch(error => {
           console.log(error.response.data.error);
-          this.err = error.response.data.error;
         });
     },
     set() {
@@ -58,11 +60,14 @@ export default {
         })
         .catch(error => {
           console.log(error.response);
-          this.err = error.response.data.error;
-          this.data = new Array();
           this.length = 0;
+          this.data = new Array();
         });
-    }
+    } ,
+           setting(){
+          this.$router.push({ path: "/settings" });
+
+       }
   }
 };
 </script>
@@ -80,11 +85,16 @@ ul {
   width: 15%;
   height: 2em;
 }
-#id,
 #name {
-  width: 42.5%;
+  width: 85%;
   float: left;
   height: 2em;
   text-align: center;
+}
+#setting{
+text-align: center;
+ float: left;
+ width: 15%;
+ margin-top: 3%;
 }
 </style>

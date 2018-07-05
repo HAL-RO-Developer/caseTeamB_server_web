@@ -42,9 +42,12 @@ export default {
         .then(response => {
           console.log(response.data);
           this.data = "";
+          this.length = 0;
           this.set();
         })
-        .catch(error => {});
+        .catch(error => {
+
+        });
     },
     set() {
       http
@@ -57,8 +60,6 @@ export default {
           //console.log("%d",this.length);
         })
         .catch(error => {
-          length = 0;
-
         });
     },
     pin() {
@@ -68,11 +69,6 @@ export default {
 };
 </script>
 <style>
-#top {
-  float: left;
-  width: 50%;
-  height: 2em;
-}
 #name {
   float: left;
   width: 40%;
@@ -84,7 +80,6 @@ export default {
   height: 2em;
   float: left;
   text-align: center;
-
 }
 #button {
   float: left;
@@ -94,6 +89,5 @@ export default {
 #next{
 margin-top: 5%;
 margin-left: 50%;
-  
 }
 </style>
