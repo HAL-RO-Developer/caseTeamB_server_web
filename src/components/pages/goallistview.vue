@@ -3,16 +3,20 @@
     <app-header :title='title'></app-header>
     <div id = "err">{{err}}</div>
     <div v-if="length">
-      <p class="card" id = "content">目標名</p>
+      <p class="card" id = "content">目標名(子ども名)</p>
       <p id = "button">&nbsp;</p>
     </div>
           
-   <div v-for="goal in length"  v-bind:key="goal">
-        <p class="card" id = "content" v-for="i in goals[goal-1]['child_goals'].length" 
-          v-bind:value="goals[goal-1]['child_goals'][goal-1]['goal_id']" v-bind:key="i">
-          {{goals[goal-1]['child_goals'][i-1]['content']}}({{goals[goal-1]['nickname']}})</p>
-        <button id = "button" class="button" @click="dele(goals[goal-1]['child_goals'][goal-1]['goal_id'])">削除</button>
-    </div>
+   <b-field>
+      <section v-for="a in length"  v-bind:key="a">
+        <div placeholder="Select a goal" expanded>
+        <div v-for="i in goals[a-1]['child_goals'].length" 
+        v-bind:value="goals[a-1]['child_goals'][i-1]['goal_id']" v-bind:key="i">
+        {{goals[a-1]['child_goals'][i-1]['content']}}({{goals[a-1]['nickname']}})
+        </div>
+        </div>
+      </section>
+    </b-field>
         <!--<fab :icon="fabIcon" @click="isComponentModalActive = true"></fab>-->
         <fab :icon="fabIcon" @click="goal"></fab>
         <under-tab :index='1'></under-tab>

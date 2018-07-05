@@ -16,15 +16,13 @@
         </b-select>
     </b-field>
 
-
-
     <b-field label="目標一覧">
-      <section v-for="goal in length"  v-bind:key="goal">
-        <b-select placeholder="Select a goal" v-model ="goal_id" expanded>
-          <option v-for="i in goals[goal-1]['child_goals'].length"
-          v-bind:value="goals[goal-1]['child_goals'][goal-1]['goal_id']" v-bind:key="i">
-          {{goals[goal-1]['child_goals'][i-1]['content']}}({{goals[goal-1]['nickname']}})
-          </option>
+      <section v-for="a in length"  v-bind:key="a">
+        <b-select placeholder="Select a goal" v-model ="id" expanded>
+        <option v-for="i in goals[a-1]['child_goals'].length" 
+        v-bind:value="goals[a-1]['child_goals'][i-1]['goal_id']" v-bind:key="i">
+        {{goals[a-1]['child_goals'][i-1]['content']}}({{goals[a-1]['nickname']}})
+        </option>
         </b-select>
       </section>
     </b-field>
