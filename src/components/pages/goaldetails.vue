@@ -45,7 +45,6 @@ export default {
     }
   },
   components: {
-    Child
   } ,
   message(){
             this.$router.push({ path: "/message" });
