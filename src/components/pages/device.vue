@@ -1,5 +1,5 @@
 <template>
-<div v-if  = "ok == 1">
+<div>
   <div v-if="length">
   <p id="name" class="card">名前</p>
   <p id = "device" class="card">デバイス</p>
@@ -13,7 +13,7 @@
   <button id = "button" class="button" @click="dele(data[i-1]['child_devices'][a-1])">削除</button>
   </div>
 </div>
-      <button id = "next" class="button" @click="pin();" >pin</button>
+    <button id = "next" class="button" @click="pin();" >pin</button>
     <under-tab :index=0 ></under-tab>
 </div>
 
@@ -29,7 +29,6 @@ export default {
       selected: null,
       length: 0,
       data: [], 
-      ok : 0
     };
   },
   created: function() {
@@ -57,7 +56,6 @@ export default {
           this.data = response.data.devices;
           this.length = this.data["length"];
           //console.log("%d",this.length);
-          this.ok = 1;
         })
         .catch(error => {});
     },

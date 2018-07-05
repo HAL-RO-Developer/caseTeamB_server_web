@@ -7,6 +7,7 @@
      <p class="card" id="messa">メッセージ</p>
      <p id = "button">&nbsp;</p>
   </div>
+  
 <div v-for= "i in length" v-bind:value="i" v-bind:key="i">
 <div  v-for="a in data[i-1]['child_messages'].length" v-bind:value="a" v-bind:key="a"> 
   <p class="card" id="name">{{data[i-1][['nickname']]}} </p>
