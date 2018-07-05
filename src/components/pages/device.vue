@@ -1,5 +1,5 @@
 <template>
-<div>
+<div v-if  = "ok == 1">
   <div v-if="length">
   <p id="name" class="card">名前</p>
   <p id = "device" class="card">デバイス</p>
@@ -12,9 +12,8 @@
   <p id = "device" class="card">{{data[i-1]['child_devices'][a-1]}}</p>
   <button id = "button" class="button" @click="dele(data[i-1]['child_devices'][a-1])">削除</button>
   </div>
-
 </div>
-    <button id = "next" class="button" @click="pin();" >pin</button>
+      <button id = "next" class="button" @click="pin();" >pin</button>
     <under-tab :index=0 ></under-tab>
 </div>
 
@@ -29,10 +28,13 @@ export default {
     return {
       selected: null,
       length: 0,
-      data: []
+      data: [], 
+      ok : 0
     };
   },
   created: function() {
+    this.data = "";
+    this.length = 0;
     this.set();
   },
   methods: {
@@ -45,24 +47,23 @@ export default {
           this.length = 0;
           this.set();
         })
-        .catch(error => {
-
-        });
+        .catch(error => {});
     },
     set() {
       http
         .getid()
         .then(response => {
-          this.data = "";
           console.log(response.data);
           this.data = response.data.devices;
           this.length = this.data["length"];
           //console.log("%d",this.length);
+          this.ok = 1;
         })
-        .catch(error => {
-        });
+        .catch(error => {});
     },
     pin() {
+      this.data = "";
+      this.length = 0;
       this.$router.push({ path: "/pin" });
     }
   }
@@ -85,9 +86,10 @@ export default {
   float: left;
   width: 20%;
   height: 2em;
+  text-align: center;
 }
-#next{
-margin-top: 5%;
-margin-left: 50%;
+#next {
+  margin-top: 5%;
+  margin-left: 50%;
 }
 </style>
