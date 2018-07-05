@@ -84,13 +84,6 @@ export default {
 </script>
 
 <style>
-#card{
-  width: 21.25%;
-  float: left;
-  text-align: center;
-  height: 2em;
-
-}
 #name,#content{
   width: 20%;
   float: left;
