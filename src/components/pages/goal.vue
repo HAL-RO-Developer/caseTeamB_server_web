@@ -6,7 +6,7 @@
 <section>
     <b-field>
         <b-select type="number" v-model="child_id" 
-        placeholder="子どもID" expanded>
+        placeholder="子ども名" expanded>
             <option v-for="option in options"
             :key="option.child_id" :value="option.child_id">
             {{option.nickname}}</option>
@@ -21,15 +21,17 @@
             >
         </b-input>
     </b-field>
-        <b-field>
-            <b-input
-                type="number"
-                v-model="criteria"
-                placeholder="達成目標数"
-                expanded
-                >
-            </b-input>
-        </b-field>
+
+    <b-field>
+        <b-input
+            type="number"
+            v-model="criteria"
+            placeholder="達成目標数"
+            expanded
+            >
+        </b-input>
+    </b-field>
+
     <b-field>
         <b-datepicker
             placeholder="Click to select..."
@@ -40,7 +42,8 @@
         </b-datepicker>
     </b-field>  
     <footer class="modal-card-foot">
-    <button class="button" type="button"  @click="onclick">登録</button>
+    <button class="button" type="button" @click="onclick">目標登録</button>
+    <button class="button" type="button" @click="device">ボタン登録</button>
     </footer>
 </section>
 </form>
@@ -62,7 +65,7 @@ export default {
     AppFooter
   },
   created: function() {
-    this.set();
+    this.get();
   },
   data() {
     return {
@@ -95,7 +98,10 @@ export default {
           this.err = error.response.data.error;
         });
     },
-    set() {
+    device(){
+      this.$router.push({ path: "goal/button" });
+    },
+    get() {
       http
         .getchild()
         .then(response => {

@@ -1,19 +1,25 @@
 <template>
     <div class="modal-card" style="width: auto">
-        <app-header :title='title'></app-header>
-        <p id = "err">{{err}}</p>
-        <card v-for="(goal, index) in goals" 
-            :key="index"
-            :nickname="child.nickname"
-            :id="child.child_id"
-            :selected="selected"
-            @remove="removegoal"
-            @select="select"></card>
-        <fab :icon="fabIcon" @click="isComponentModalActive = true"></fab>
+    <app-header :title='title'></app-header>
+    <div id = "err">{{err}}</div>
+    <div v-if="length">
+      <p class="card" id = "content">目標名</p>
+      <p id = "button">&nbsp;</p>
+    </div>
+          
+   <div v-for="goal in length"  v-bind:key="goal">
+        <p class="card" id = "content" v-for="i in goals[goal-1]['child_goals'].length" 
+          v-bind:value="goals[goal-1]['child_goals'][goal-1]['goal_id']" v-bind:key="i">
+          {{goals[goal-1]['child_goals'][i-1]['content']}}({{goals[goal-1]['nickname']}})</p>
+        <button id = "button" class="button" @click="dele(goals[goal-1]['child_goals'][goal-1]['goal_id'])">削除</button>
+    </div>
+        <!--<fab :icon="fabIcon" @click="isComponentModalActive = true"></fab>-->
+        <fab :icon="fabIcon" @click="goal"></fab>
         <under-tab :index='1'></under-tab>
+        <!--
         <b-modal :active.sync="isComponentModalActive" has-modal-card>
             <modal-form @add="addgoal"></modal-form>
-        </b-modal>
+        </b-modal>-->
     </div>
 </template>
 
@@ -41,6 +47,7 @@ export default {
       title: "目標一覧",
       fabIcon: "plus",
       goals: [],
+      child_id: "",
       ok: "",
       err: "",
       length: 0,
@@ -48,11 +55,25 @@ export default {
       isComponentModalActive: false
     };
   },
-  created: function() {
-    this.set();
-  },
   methods: {
-    getgoal() {
+    goal() {
+      this.$router.push({ path: "/goal" });
+    },
+    dele(id) {
+      console.log("goal_id:%dを消します", id);
+      http
+        .delegoal(String(id))
+        .then(response => {
+          console.log(response.data);
+          this.length = 0;
+          this.goals = new Array();
+          this.getGoal();
+        })
+        .catch(error => {
+          console.log(error.response.data.error);
+        });
+    },
+    getGoal() {
       http
         .getgoal()
         .then(response => {
@@ -62,9 +83,8 @@ export default {
         })
         .catch(error => {
           console.log(error.response);
-          this.err = error.response.data.error;
-          this.goals = new Array();
           this.length = 0;
+          this.goals = new Array();
         });
     },
     addgoal(data) {
@@ -92,7 +112,7 @@ export default {
   },
   created() {
     this.selected = localStorage.getItem("child_id");
-    this.getgoal();
+    this.getGoal();
   }
 };
 </script>
