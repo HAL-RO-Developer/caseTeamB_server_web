@@ -50,4 +50,5 @@ export default {
             this.$router.push({ path: "/message" });
     }
 };
+
 </script>
