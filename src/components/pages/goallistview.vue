@@ -4,7 +4,7 @@
         <p id = "err">{{err}}</p>
         <card v-for="(goal, index) in goals" 
             :key="index"
-            :nickname="child.nickname" 
+            :nickname="child.nickname"
             :id="child.child_id"
             :selected="selected"
             @remove="removegoal"
