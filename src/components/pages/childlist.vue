@@ -92,6 +92,9 @@ ul {
   text-align: center;
 }
 #setting{
+text-align: center;
+ float: left;
+ width: 15%;
  margin-top: 3%;
 }
 </style>

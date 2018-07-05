@@ -79,6 +79,8 @@ export default {
 }
 #device{
  margin-top: 3%;
+ text-align: center;
  float: left;
+ width: 25%;
 }
 </style>
