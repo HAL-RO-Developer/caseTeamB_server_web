@@ -5,14 +5,14 @@
         <li class="card" id = "id">ID</li>
         <li class="card" id = "name">名前</li>
         <li id = "button">&nbsp;</li>
-          </ul>
+  </ul>
           
    <ul v-for= "i in length" v-bind:value="i" v-bind:key="i">
-        <li class="card" id = "id">{{data[i-1]['child_id']}}</li>
-        <li class="card" id = "name">{{data[i-1]['nickname']}}</li>
-        <li><button id = "button" class="button" @click="dele(data[i-1]['child_id']);">削除</button></li>
-        </ul>
-              <under-tab :index=2 ></under-tab>
+      <li class="card" id = "id">{{data[i-1]['child_id']}}</li>
+      <li class="card" id = "name">{{data[i-1]['nickname']}}</li>
+      <li><button id = "button" class="button" @click="dele(data[i-1]['child_id']);">削除</button></li>
+    </ul>
+    <under-tab :index=2 ></under-tab>
 
 </div>
 
