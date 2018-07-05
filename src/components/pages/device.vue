@@ -12,10 +12,10 @@
   <p id = "device" class="card">{{data[i-1]['child_devices'][a-1]}}</p>
   <button id = "button" class="button" @click="dele(data[i-1]['child_devices'][a-1])">削除</button>
   </div>
+      <button id = "next" class="button" @click="pin();" >pin</button>
+
 </div>
     <under-tab :index=0 ></under-tab>
-    <button id = "next" class="button" @click="pin();" >pin</button>
-
 </div>
 
 </template>
