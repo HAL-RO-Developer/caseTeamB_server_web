@@ -97,14 +97,14 @@ export default {
   height: 2em;
 }
 #messa{
-  width: 35%;
+  width: 30%;
   float: left;
   text-align: center;
   height: 2em;
 }
 #button {
   float: left;
-  width: 15%;
+  width: 20%;
   text-align: center;
   height: 2em;
 }
