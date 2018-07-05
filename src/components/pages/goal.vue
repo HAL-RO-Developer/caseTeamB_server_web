@@ -1,11 +1,8 @@
 <template>
 <div id = "form" class="modal-card" style="width: auto">
+<app-header :title="title"></app-header>
 <p v-if="err" id = "err">{{err}}</p>
-
 <form>
-    <header class="modal-card-head">
-        <p class="modal-card-title">目標登録</p>
-    </header>
 <section>
     <b-field>
         <b-select type="number" v-model="child_id" 
@@ -47,7 +44,6 @@
     </footer>
 </section>
 </form>
-
 <under-tab :index=1></under-tab>
 </div>
 </template>
@@ -57,12 +53,20 @@ import moment from "moment";
 import axios from "axios";
 import auth from "../../service/auth";
 import http from "../../service/service";
+import AppHeader from "../modules/header.vue";
+import AppFooter from "../modules/footer.vue";
+
 export default {
+  components: {
+    AppHeader,
+    AppFooter
+  },
   created: function() {
     this.set();
   },
   data() {
     return {
+      title: "目標登録",
       options: [],
       child_id: null,
       content: "",

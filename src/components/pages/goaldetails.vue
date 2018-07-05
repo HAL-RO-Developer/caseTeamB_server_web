@@ -1,10 +1,7 @@
 <template>
 <div>
-  <header class="modal-card-head">
-    <p class="modal-card-title">目標詳細</p>
-  </header>
+<app-header :title="title"></app-header>
 <section>
-
   <b-tabs v-model="activeTab" position="is-centered">
     <b-tab-item label="日別"><child></child></b-tab-item>
     <b-tab-item label="週別"></b-tab-item>
@@ -14,6 +11,7 @@
     <button class="button" type="button" @click="message">目標メッセージ</button>
   </center>
 </section>
+<app-footer></app-footer>
 <under-tab :index=1></under-tab>
 </div>
 </template>
@@ -23,11 +21,17 @@ import moment from "moment";
 import axios from "axios";
 import http from "../../service/service";
 import auth from "../../service/auth";
-import Child from "./child.vue"
+import AppHeader from "../modules/header.vue";
+import AppFooter from "../modules/footer.vue";
+
 export default {
+  components: {
+    AppHeader,
+    AppFooter
+  },
   data() {
     return {
-      graph: "ダミー",
+      title: "目標登録",
       day: new Day(),
       week: new Week()
     };
