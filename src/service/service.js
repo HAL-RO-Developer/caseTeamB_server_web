@@ -12,6 +12,16 @@ const api = axios.create({
 
 class Http {
     constructor() { }
+    SetToken(t){
+        localStorage.setItem("token", t)
+        http.Load();
+    }
+    GetToken(){
+        return localStorage.getItem("token")
+    }
+    RemoveToken(){
+        localStorage.removeItem("token")
+    }
     signin(name, pass) {
         return api.post('signin', {
             name,
@@ -84,6 +94,12 @@ class Http {
     }
     getgoal() {
         return api.get('goal')
+    }
+    putgoal(goal_id, device_id) {
+        return api.put('goal/goal', {
+            goal_id,
+            device_id
+        })
     }
     delegoal(goal_id) {
         return api.delete('goal' + goal_id, {

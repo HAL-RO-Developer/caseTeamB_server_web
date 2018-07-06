@@ -8,7 +8,7 @@
    <div v-for= "i in length" v-bind:value="i" v-bind:key="i">
         <p class="card" id = "name">{{data[i-1]['nickname']}}</p>
         <button id = "button" class="button" @click="dele(data[i-1]['child_id']);">削除</button>
-        </div>
+    </div>
         <section>
          <button  class="button" type="button" @click="setting"  id ="setting" >    
           設定
@@ -63,11 +63,10 @@ export default {
           this.length = 0;
           this.data = new Array();
         });
-    } ,
-           setting(){
-          this.$router.push({ path: "/settings" });
-
-       }
+    },
+    setting(){
+    this.$router.push({ path: "/settings" });
+    }
   }
 };
 </script>

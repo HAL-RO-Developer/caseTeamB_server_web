@@ -12,8 +12,9 @@ import GoalList from './components/pages/goallistview.vue'
 import GoalDetails from './components/pages/goaldetails.vue'
 import Settings from './components/pages/settings.vue'
 import Goal from './components/pages/goal.vue'
+import RegButton from './components/pages/regbutton.vue'
 import Test from './components/pages/test.vue'
-import Record　from './components/pages/record.vue'
+import Record 　from './components/pages/record.vue'
 import Graph from './components/modules/graph.vue'
 import NotFound from './components/pages/notFound.vue'
 import Buefy from 'buefy'
@@ -32,7 +33,7 @@ const routes = [
     { path: "/", component: Dashboad },
     { path: "/login", component: Login },
     { path: "/pin", component: Pin },
-    { path: "/device", component : Device},
+    { path: "/device", component: Device },
     { path: "/goal/details", component: GoalDetails },
     { path: "/goal/list", component: GoalList },
     { path: "/settings", component: Settings },
@@ -40,6 +41,7 @@ const routes = [
     { path: "/child/list", component: Childlist },
     { path: "/test", component: Test },
     { path: "/goal", component: Goal },
+    { path: "/goal/button", component: RegButton },
     { path: "/record", component: Record },
     { path: "/message", component: Message },
     { path: "/message/add", component: AddMessage },
