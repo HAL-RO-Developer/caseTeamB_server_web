@@ -1,6 +1,6 @@
 import axios from 'axios'
 import auth from './auth'
-URL = 'https://caseteambserver-qgkloqwugs.now.sh/';
+URL = 'https://caseteambserver-wkxcvgrrxm.now.sh/';
 const api = axios.create({
     baseURL: URL, // バックエンドB のURL:port を指定する
     headers: {
@@ -93,16 +93,16 @@ class Http {
         })
     }
     getgoal() {
-        return api.get('goal/goal')
+        return api.get('goal')
     }
     putgoal(goal_id, device_id) {
-        return api.put('goal/goal', {
+        return api.put('goal', {
             goal_id,
             device_id
         })
     }
     delegoal(goal_id) {
-        return api.delete('goal/goal' + goal_id, {
+        return api.delete('goal' + goal_id, {
         })
     }
     addchild(nickname, birthday, sex) {
