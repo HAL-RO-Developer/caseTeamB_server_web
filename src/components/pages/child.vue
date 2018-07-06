@@ -31,11 +31,11 @@
 
      <section class="modal-card-body">
     <b-radio v-model="sex"
-                native-value = 0>
+                native-value = 1>
                 男
             </b-radio>
             <b-radio v-model="sex"
-                native-value = 1>
+                native-value = 2>
                 女
             </b-radio>
      </section>

@@ -4,10 +4,11 @@
 <h1 id = "box">
     {{pin}} 
 </h1>
-    <b-select placeholder="Select a name" v-model ="id">
-<option v-for="a in length" v-bind:value="data[a-1]['child_id']" v-bind:key="a">{{data[a-1]['nickname']}}</option>
+            <section v-for="a in length"  v-bind:key="a">
+           <b-select placeholder="Select a name" v-model ="id" >
+<option v-for="i in data[a-1]['child_goals'].length" v-bind:value="data[a-1]['child_goals'][i-1]['goal_id']" v-bind:key="i">{{data[a-1]['child_goals'][i-1]['content']}}({{data[a-1]['nickname']}})</option>
     </b-select>
-<button  class="button" type="button" @click="onclick" >    
+            </section><button  class="button" type="button" @click="onclick" >    
   put
 </button>
 <section>
@@ -28,10 +29,11 @@ export default {
     
      created: function() {
     http
-      .getchild()
+      .getgoal()
       .then(response => {
-        this.data = response.data.children;
-        this.length =  this.data['length' ];
+          this.data = response.data.goals;
+          this.length = this.data["length"];
+
         this.ok = 1;
       })
       .catch(error =>{

@@ -35,9 +35,9 @@ class Http {
         })
         alert("Siginup");
     }
-    getpin(child_id) {
+    getpin(goal_id) {
         return api.post('device', {
-            child_id
+            goal_id
         })
     }
     getid() {
@@ -48,7 +48,7 @@ class Http {
         })
     }
     delemessage(request) {
-        return api.delete('goal/message/' + request, {
+        return api.delete('message/' + request, {
         })
     }
     /*
@@ -85,7 +85,7 @@ class Http {
     }
     */
     addgoal(child_id, content, criteria, deadline) {
-        return api.post('goal/goal', {
+        return api.post('goal', {
             child_id,
             content,
             criteria,
@@ -126,11 +126,11 @@ class Http {
         })
     }
     getmessage() {
-        return api.get('goal/message')
+        return api.get('message')
 
     }
     addmessage(goal_id, message_call, message) {
-        return api.post('goal/message', {
+        return api.post('message', {
             goal_id,
             message_call,
             message
