@@ -48,7 +48,7 @@ class Http {
         })
     }
     delemessage(request) {
-        return api.delete('goal/message/' + request, {
+        return api.delete('message/' + request, {
         })
     }
     /*
@@ -96,7 +96,7 @@ class Http {
         return api.get('goal')
     }
     putgoal(goal_id, device_id) {
-        return api.put('goal/goal', {
+        return api.put('goal', {
             goal_id,
             device_id
         })
