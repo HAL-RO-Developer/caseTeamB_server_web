@@ -4,15 +4,17 @@
 <h1 id = "box">
     {{pin}} 
 </h1>
-            <section v-for="a in length"  v-bind:key="a">
+           <b-select placeholder="Select a name" v-model ="name" >
+<option v-for="a in length"  v-bind:value="a" v-bind:key="a" >{{data[a-1]['nickname']}}</option>
+           </b-select>
+
            <b-select placeholder="Select a name" v-model ="id" >
-<option v-for="i in data[a-1]['child_goals'].length" v-bind:value="data[a-1]['child_goals'][i-1]['goal_id']" v-bind:key="i">{{data[a-1]['child_goals'][i-1]['content']}}({{data[a-1]['nickname']}})</option>
+<option v-for="i in data[name-1]['child_goals'].length" v-bind:value="data[name-1]['child_goals'][i-1]['goal_id']" v-bind:key="i">{{data[name-1]['child_goals'][i-1]['content']}}</option>
     </b-select>
-            </section><button  class="button" type="button" @click="onclick" >    
+            <button  class="button" type="button" @click="onclick" >    
   put
 </button>
-<section>
-</section>
+
 </div>
     <under-tab :index=0></under-tab>
     <button  class="button" type="button" @click="device"  id ="device" >    
@@ -46,7 +48,8 @@ export default {
             pin : "",
             options : "hoge",
             id : "" ,
-            ok : ""
+            ok : "",
+            name: 1
         }
     },
     methods:{
