@@ -7,13 +7,16 @@
             </header>
                     <section class="modal-card-body">
 
+ <b-field label="name">
            <b-select placeholder="Select a name" v-model ="name" >
 <option v-for="a in length"  v-bind:value="a" v-bind:key="a" >{{data[a-1]['nickname']}}</option>
            </b-select>
-
+</b-field>
+<b-field label="goals">
            <b-select placeholder="Select a name" v-model ="id" >
 <option v-for="i in data[name-1]['child_goals'].length" v-bind:value="data[name-1]['child_goals'][i-1]['goal_id']" v-bind:key="i">{{data[name-1]['child_goals'][i-1]['content']}}</option>
-    </b-select>
+  </b-select>
+  </b-field>
            
         <b-field label="回数">
                     <b-input

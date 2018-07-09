@@ -1,20 +1,26 @@
 <template>
 <div>
-<div id= "pin" v-if="ok == 1">
+<div id = "pin" class="modal-card" style="width: auto" v-if="ok == 1">
+    <form>
 <h1 id = "box">
     {{pin}} 
 </h1>
+    <section class="modal-card-body">
+ <b-field label="name">
            <b-select placeholder="Select a name" v-model ="name" >
 <option v-for="a in length"  v-bind:value="a" v-bind:key="a" >{{data[a-1]['nickname']}}</option>
            </b-select>
-
+</b-field>
+<b-field label="goals">
            <b-select placeholder="Select a name" v-model ="id" >
 <option v-for="i in data[name-1]['child_goals'].length" v-bind:value="data[name-1]['child_goals'][i-1]['goal_id']" v-bind:key="i">{{data[name-1]['child_goals'][i-1]['content']}}</option>
-    </b-select>
+  </b-select>
+  </b-field>
+    </section>
             <button  class="button" type="button" @click="onclick" >    
   put
 </button>
-
+</form>
 </div>
     <under-tab :index=0></under-tab>
     <button  class="button" type="button" @click="device"  id ="device" >    
@@ -22,6 +28,8 @@
 </button>
 </div>
 </template>
+
+
 <script>
 import http from '../../service/service'
 import axios from 'axios'
@@ -73,10 +81,9 @@ export default {
 
 <style>
 
-#pin{
-    text-align: center;
-}
+
 #box{
+    text-align: center;
     border: solid #008080;
 }
 #device{
