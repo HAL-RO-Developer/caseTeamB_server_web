@@ -17,9 +17,11 @@
   </b-select>
   </b-field>
     </section>
+         <footer class="modal-card-foot">
             <button  class="button" type="button" @click="onclick" >    
-  put
+                発行
 </button>
+         </footer>
 </form>
 </div>
     <under-tab :index=0></under-tab>
@@ -80,8 +82,6 @@ export default {
 </script>
 
 <style>
-
-
 #box{
     text-align: center;
     border: solid #008080;
